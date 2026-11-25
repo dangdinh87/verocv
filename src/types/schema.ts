@@ -163,7 +163,7 @@ export const CvHeaderLayoutSchema = z.enum(['template', 'left', 'center', 'split
 export type CvHeaderLayout = z.infer<typeof CvHeaderLayoutSchema>
 
 export const CvSettingsSchema = z.object({
-  accentColor: z.string().default('#0c6a58'),
+  accentColor: z.string().default('#2448a8'),
   fontFamily: CvFontFamilySchema.default('sans'),
   fontSize: z.enum(['compact', 'normal', 'relaxed']).default('normal'),
   spacing: z.enum(['compact', 'normal', 'relaxed']).default('normal'),
@@ -196,7 +196,7 @@ export const ResumeDocumentSchema = z.object({
   isMaster: z.boolean().default(false),
   parentCvId: z.string().nullable().default(null),
   settings: CvSettingsSchema.default({
-    accentColor: '#0c6a58',
+    accentColor: '#2448a8',
     fontFamily: 'sans',
     fontSize: 'normal',
     spacing: 'normal',
@@ -343,7 +343,7 @@ export function migrateToV2(raw: unknown): ResumeDocumentV2 {
 
   const s = rec.settings ?? {}
   const rawSettings = {
-    accentColor: s.accentColor || '#0c6a58',
+    accentColor: s.accentColor || '#2448a8',
     fontFamily: CvFontFamilySchema.safeParse(s.fontFamily).success ? s.fontFamily : 'sans',
     fontSize: s.fontSize || 'normal',
     spacing: s.spacing || 'normal',

@@ -13,7 +13,7 @@ export default function OpenGraphImage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        background: '#f6f5f0',
+        background: '#f7f4ee',
         padding: '64px 76px',
         color: '#1c1e22',
         borderBottom: '12px solid #2448a8',
@@ -23,7 +23,7 @@ export default function OpenGraphImage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <svg width="52" height="52" viewBox="0 0 32 32">
             <path d="M8 2h13.5L30 10.5V24a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6V8a6 6 0 0 1 6-6Z" fill="#2448a8" />
-            <path d="M21.5 2v6.5A2 2 0 0 0 23.5 10.5H30L21.5 2Z" fill="#dfd1b8" />
+            <path d="M21.5 2v6.5A2 2 0 0 0 23.5 10.5H30L21.5 2Z" fill="#d8c4a0" />
             <path
               fill="none"
               stroke="#ffffff"
@@ -32,7 +32,6 @@ export default function OpenGraphImage() {
               strokeLinejoin="round"
               d="M9.5 12.5 15.2 22.8 22 11.5"
             />
-            <circle cx="15.2" cy="14" r="1.4" fill="#8fa9f0" />
           </svg>
           <span style={{ fontSize: 36, fontWeight: 800, letterSpacing: '-0.03em' }}>
             Vero<span style={{ color: '#2448a8' }}>CV</span>
@@ -66,7 +65,7 @@ export default function OpenGraphImage() {
                 background: '#ffffff',
                 fontSize: 20,
                 fontWeight: 600,
-                color: '#374440',
+                color: '#3e424a',
               }}
             >
               {badge}
@@ -103,8 +102,8 @@ export default function OpenGraphImage() {
             </div>
             <div
               style={{
-                background: '#daf5ed',
-                color: '#0e8a6d',
+                background: '#e2f2e8',
+                color: '#1f7a4d',
                 padding: '8px 14px',
                 borderRadius: '999px',
                 fontSize: 18,
@@ -138,7 +137,7 @@ export default function OpenGraphImage() {
             border: '2px solid #2448a8',
           }}
         >
-          <span style={{ fontSize: 14, color: '#8fa9f0', fontWeight: 700 }}>LIVE ANALYTICS · verocv.vn/p/quoc-huy</span>
+          <span style={{ fontSize: 14, color: '#a9bdf6', fontWeight: 700 }}>LIVE ANALYTICS · verocv.vn/p/quoc-huy</span>
           <span style={{ fontSize: 18, fontWeight: 600, marginTop: '4px' }}>HR vừa mở xem &amp; tải PDF</span>
         </div>
       </div>

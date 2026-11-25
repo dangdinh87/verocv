@@ -12,8 +12,8 @@ import { useEditorStore } from '@/store/editor-store'
 import { DEFAULT_SECTION_ORDER, isCustomSectionKey, normalizeSectionOrder, type CvColumnSplit, type CvFontFamilyV2, type CvHeaderLayout, type CvHeadingStyle, type CvSkillStyle } from '@/types/schema'
 
 const ACCENT_COLORS = [
-  { name: 'Ngọc lục bảo VeroCV', value: '#0c6a58' },
-  { name: 'Xanh bút mực', value: '#2563eb' },
+  { name: 'Xanh mực VeroCV', value: '#2448a8' },
+  { name: 'Ngọc lục bảo', value: '#0c6a58' },
   { name: 'Đen in ấn', value: '#0f172a' },
   { name: 'Xanh ngọc', value: '#0d9488' },
   { name: 'Xanh hải quân', value: '#1e3a8a' },
@@ -167,7 +167,7 @@ export function DesignSettingsForm({ onTranslateCv }: { onTranslateCv?: (targetL
             <input
               id={colorPickerId}
               type="color"
-              value={/^#[0-9a-fA-F]{6}$/.test(s.accentColor) ? s.accentColor : '#0c6a58'}
+              value={/^#[0-9a-fA-F]{6}$/.test(s.accentColor) ? s.accentColor : '#2448a8'}
               onChange={(e) =>
                 updateDoc((d) => {
                   d.settings.accentColor = e.target.value

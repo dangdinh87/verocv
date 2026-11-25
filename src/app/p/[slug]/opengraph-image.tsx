@@ -49,8 +49,8 @@ function PrivacySafeCard({ subtitle }: { subtitle: string }) {
             alignSelf: 'flex-start',
             padding: '8px 18px',
             borderRadius: '999px',
-            background: 'rgba(17, 130, 108, 0.28)',
-            border: '1px solid rgba(52, 211, 153, 0.45)',
+            background: 'rgba(31, 122, 77, 0.25)',
+            border: '1px solid rgba(92, 199, 150, 0.45)',
             color: '#a7f3d0',
             fontSize: '20px',
             fontWeight: 700,
@@ -76,7 +76,7 @@ function PrivacySafeCard({ subtitle }: { subtitle: string }) {
         }}
       >
         <span>{BRAND.domain}</span>
-        <span style={{ color: '#8fa9f0', fontWeight: 700 }}>Xuất PDF A4 &amp; Word (.docx)</span>
+        <span style={{ color: '#a9bdf6', fontWeight: 700 }}>Xuất PDF A4 &amp; Word (.docx)</span>
       </div>
     </div>,
     size,
@@ -148,9 +148,9 @@ export default async function PublicCvOpenGraphImage({ params }: { params: Promi
             gap: '10px',
             padding: '8px 18px',
             borderRadius: '999px',
-            background: 'rgba(17, 130, 108, 0.28)',
-            border: '1px solid rgba(52, 211, 153, 0.45)',
-            color: '#8fa9f0',
+            background: 'rgba(31, 122, 77, 0.25)',
+            border: '1px solid rgba(92, 199, 150, 0.45)',
+            color: '#a7f3d0',
             fontSize: '20px',
             fontWeight: 700,
           }}
@@ -162,7 +162,7 @@ export default async function PublicCvOpenGraphImage({ params }: { params: Promi
       {/* Main executive card content */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
         <div style={{ fontSize: '60px', fontWeight: 800, lineHeight: 1.08, letterSpacing: '-0.03em', color: '#ffffff' }}>{name}</div>
-        <div style={{ fontSize: '32px', fontWeight: 600, color: '#8fa9f0', lineHeight: 1.25 }}>
+        <div style={{ fontSize: '32px', fontWeight: 600, color: '#a9bdf6', lineHeight: 1.25 }}>
           {role}
           {location ? ` · ${location}` : ''}
         </div>
@@ -175,11 +175,11 @@ export default async function PublicCvOpenGraphImage({ params }: { params: Promi
                 style={{
                   padding: '10px 18px',
                   borderRadius: '10px',
-                  background: 'rgba(17, 130, 108, 0.22)',
-                  border: '1px solid rgba(52, 211, 153, 0.28)',
+                  background: 'rgba(255, 255, 255, 0.06)',
+                  border: '1px solid rgba(255, 255, 255, 0.14)',
                   fontSize: '21px',
                   fontWeight: 600,
-                  color: '#d1fae5',
+                  color: '#efebe3',
                 }}
               >
                 {skill}

@@ -1,14 +1,23 @@
+import { FlowCvCompareSection } from '@/components/home/flowcv-compare-section'
 import { FreePlanSection } from '@/components/home/free-plan-section'
 import { HeroShowcase } from '@/components/home/hero-showcase'
 import { LiveCustomizerSection } from '@/components/home/live-customizer-section'
 import { SaasBentoSection } from '@/components/home/saas-bento-section'
 import { StepsSection } from '@/components/home/steps-section'
 import { TemplatesStripSection } from '@/components/home/templates-strip-section'
+import { TestimonialsSection } from '@/components/home/testimonials-section'
 import { Button } from '@/components/ui/button'
 import { FaqList } from '@/components/ui/faq-list'
 import { FormSection } from '@/components/ui/form-section'
 import { CV_TEMPLATES } from '@/data/cv-templates'
 import { HOME_FAQS } from '@/data/faqs'
+
+const HERO_AVATARS = [
+  { src: '/images/avatars/quoc-huy.jpg', alt: 'Trần Quốc Huy' },
+  { src: '/images/avatars/minh-anh.jpg', alt: 'Lê Thị Trúc Ly' },
+  { src: '/images/avatars/hoang-nam.jpg', alt: 'Đỗ Hoàng Nam' },
+  { src: '/images/avatars/khanh-linh.jpg', alt: 'Vũ Khánh Linh' },
+] as const
 
 export default function HomePage() {
   return (
@@ -24,7 +33,7 @@ export default function HomePage() {
               Soạn CV song ngữ Việt – Anh với AI Review từng dòng, xuất PDF &amp; Word (.docx), chia sẻ Link trực tuyến kèm thống kê lượt
               nhà tuyển dụng mở xem. Bắt đầu ngay không cần đăng ký.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/cv" size="lg">
                 Mở CV Studio miễn phí
               </Button>
@@ -33,7 +42,24 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <dl className="mt-7 grid grid-cols-1 gap-4 border-t border-rule pt-6 xs:grid-cols-3">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <div className="flex -space-x-2.5">
+                {HERO_AVATARS.map((av) => (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    key={av.src}
+                    src={av.src}
+                    alt={av.alt}
+                    className="size-9 rounded-full border-2 border-paper object-cover"
+                  />
+                ))}
+              </div>
+              <p className="text-xs font-medium text-ink-2">
+                Được tin dùng bởi ứng viên <strong className="font-semibold text-ink">IT, Kinh doanh (Sales), Marketing &amp; Tài chính</strong> Việt Nam
+              </p>
+            </div>
+
+            <dl className="mt-6 grid grid-cols-1 gap-4 border-t border-rule pt-5 xs:grid-cols-3">
               <div>
                 <dt className="text-xs font-bold text-ink">PDF &amp; Word .docx</dt>
                 <dd className="mt-0.5 text-xs text-ink-3">Máy lọc hồ sơ đọc được, không dấu mờ</dd>
@@ -57,8 +83,10 @@ export default function HomePage() {
 
       <SaasBentoSection />
       <LiveCustomizerSection />
+      <FlowCvCompareSection />
       <StepsSection />
       <TemplatesStripSection />
+      <TestimonialsSection />
       <FreePlanSection />
 
       <FormSection id="hoi-dap" title="Hỏi đáp thường gặp">

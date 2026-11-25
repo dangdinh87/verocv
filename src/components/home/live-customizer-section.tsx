@@ -69,17 +69,17 @@ const LAYOUT_OPTIONS: CustomizerLayoutOption[] = [
 ]
 
 const SIGNATURE_COLORS = [
+  { hex: '#2448a8', name: 'Xanh mực' },
   { hex: '#0c6a58', name: 'Ngọc lục bảo' },
-  { hex: '#0f172a', name: 'Đen tuyền' },
-  { hex: '#1e3a8a', name: 'Hải quân' },
-  { hex: '#b45309', name: 'Nâu đất' },
+  { hex: '#1c1e22', name: 'Đen tuyền' },
+  { hex: '#9a6212', name: 'Nâu đất' },
   { hex: '#be123c', name: 'Đỏ mộc' },
   { hex: '#4338ca', name: 'Chàm' },
 ] as const
 
 export function LiveCustomizerSection() {
   const [layout, setLayout] = useState<CvLayout>('anh-tron')
-  const [accentColor, setAccentColor] = useState<string>('#0c6a58')
+  const [accentColor, setAccentColor] = useState<string>('#2448a8')
   const [fontFamily, setFontFamily] = useState<'sans' | 'serif'>('sans')
   const [showPhoto, setShowPhoto] = useState(true)
 
@@ -200,7 +200,7 @@ export function LiveCustomizerSection() {
                   aria-label="Bật tắt ảnh chân dung trên CV"
                   onClick={() => setShowPhoto((v) => !v)}
                   className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border transition-colors ${
-                    showPhoto ? 'border-pen bg-pen' : 'border-rule bg-desk'
+                    showPhoto ? 'border-pen bg-pen-fill' : 'border-rule bg-desk'
                   }`}
                 >
                   <span

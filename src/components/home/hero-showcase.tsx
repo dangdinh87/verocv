@@ -186,7 +186,7 @@ export function HeroShowcase() {
             <ResumePaper
               layout="anh-tron"
               data={HERO_PREVIEW_DATA}
-              settings={{ accentColor: '#0c6a58' }}
+              settings={{ accentColor: '#2448a8' }}
               label="CV mẫu Ảnh tròn trên VeroCV"
             />
           </div>

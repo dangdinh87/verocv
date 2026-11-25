@@ -8,7 +8,7 @@ export type LetterLayout = 'thang' | 'dai-mau' | 'giua' | 'le-trai'
 
 export const LETTER_ACCENTS = {
   ink: { acc: '#00060c', on: '#ffffff' },
-  pen: { acc: '#0c6a58', on: '#ffffff' },
+  pen: { acc: '#2448a8', on: '#ffffff' },
   kraft: { acc: '#d9bf94', on: '#00060c' },
 } as const
 export type LetterAccent = keyof typeof LETTER_ACCENTS

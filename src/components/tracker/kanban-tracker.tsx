@@ -98,7 +98,7 @@ function celebrateOffer() {
         particleCount: 48,
         spread: 60,
         origin: { y: 0.7 },
-        colors: ['#0c6a58', '#34d399', '#dfd1b8'],
+        colors: ['#2448a8', '#1f7a4d', '#d8c4a0'],
       })
     })
     .catch(() => {})

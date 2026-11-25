@@ -25,8 +25,8 @@ export default function GlobalError({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#f6f5f0',
-          color: '#111917',
+          background: '#f7f4ee',
+          color: '#1c1e22',
           fontFamily: 'system-ui, -apple-system, sans-serif',
           padding: '24px',
         }}
@@ -36,15 +36,14 @@ export default function GlobalError({
             maxWidth: '520px',
             width: '100%',
             background: '#ffffff',
-            border: '1px solid #e2e0d8',
+            border: '1px solid #e3dccf',
             borderRadius: '12px',
             padding: '36px',
-            boxShadow: '0 1px 2px rgba(17, 25, 23, 0.04), 0 14px 36px -14px rgba(12, 106, 88, 0.11)',
           }}
         >
           <title>{`Đã có lỗi xảy ra | ${BRAND.name}`}</title>
           <h1 style={{ margin: 0, fontSize: '28px', lineHeight: 1.15 }}>Đã có sự cố ngoài ý muốn</h1>
-          <p style={{ marginTop: '14px', color: '#374440', lineHeight: 1.6 }}>
+          <p style={{ marginTop: '14px', color: '#3e424a', lineHeight: 1.6 }}>
             Ứng dụng gặp lỗi khi hiển thị trang này. Dữ liệu hồ sơ lưu trên trình duyệt của bạn vẫn an toàn.
           </p>
           <div style={{ marginTop: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -56,7 +55,7 @@ export default function GlobalError({
                 padding: '0 20px',
                 borderRadius: '8px',
                 border: 0,
-                background: '#0c6a58',
+                background: '#2448a8',
                 color: '#ffffff',
                 fontWeight: 600,
                 fontSize: '15px',
@@ -71,9 +70,8 @@ export default function GlobalError({
                 height: '44px',
                 padding: '0 20px',
                 borderRadius: '8px',
-                border: '1px solid #e2e0d8',
-                background: '#f6f5f0',
-                color: '#111917',
+                border: '1.5px solid #1c1e22',
+                color: '#1c1e22',
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',

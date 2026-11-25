@@ -21,9 +21,9 @@ const PHOTO_FILTERS: { id: PhotoFilter; label: string }[] = [
 ]
 
 const PREVIEW_SWATCHES = [
+  { name: 'Xanh mực', value: '#2448a8' },
   { name: 'Ngọc lục bảo', value: '#0c6a58' },
   { name: 'Đen tuyền', value: '#0f172a' },
-  { name: 'Hải quân', value: '#1e3a8a' },
   { name: 'Nâu đất', value: '#b45309' },
   { name: 'Đỏ mộc', value: '#be123c' },
   { name: 'Chàm', value: '#4338ca' },
@@ -35,7 +35,7 @@ export function CvTemplateGallery() {
   const [filter, setFilter] = useState<Filter>('Tất cả')
   const [photoFilter, setPhotoFilter] = useState<PhotoFilter>('all')
   const [query, setQuery] = useState('')
-  const [previewAccent, setPreviewAccent] = useState<string>('#0c6a58')
+  const [previewAccent, setPreviewAccent] = useState<string>('#2448a8')
   const [showSamplePhoto, setShowSamplePhoto] = useState<boolean>(true)
   const [creatingKitId, setCreatingKitId] = useState<string | null>(null)
 

@@ -27,7 +27,7 @@ export type CvSettings = {
 }
 
 export const DEFAULT_CV_SETTINGS: CvSettings = {
-  accentColor: '#0c6a58',
+  accentColor: '#2448a8',
   fontFamily: 'sans',
   fontSize: 'normal',
   spacing: 'normal',

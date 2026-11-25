@@ -94,7 +94,7 @@ export function VietQrCheckoutModal({
             await onUpgraded()
             if (typeof window !== 'undefined' && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
               void import('canvas-confetti')
-                .then((m) => m.default({ particleCount: 54, spread: 64, origin: { y: 0.7 }, colors: ['#0c6a58', '#34d399', '#dfd1b8'] }))
+                .then((m) => m.default({ particleCount: 54, spread: 64, origin: { y: 0.7 }, colors: ['#2448a8', '#1f7a4d', '#d8c4a0'] }))
                 .catch(() => {})
             }
           }
@@ -106,7 +106,7 @@ export function VietQrCheckoutModal({
 
   const localQrDataUrl = useMemo(() => {
     if (!session?.qrEmvString) return ''
-    const svg = qrMatrixToSvgString(generateQrMatrix(session.qrEmvString), 220, '#111917', '#ffffff')
+    const svg = qrMatrixToSvgString(generateQrMatrix(session.qrEmvString), 220, '#1c1e22', '#ffffff')
     return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`
   }, [session?.qrEmvString])
 
