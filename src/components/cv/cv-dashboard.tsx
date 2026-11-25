@@ -7,7 +7,6 @@ import {
   Copy,
   Crown,
   FileDoc,
-  FileText,
   PencilSimple,
   Plus,
   Sparkle,
@@ -196,24 +195,26 @@ export function CvDashboard() {
           </div>
           <p className="mt-1.5 max-w-[58ch] text-sm text-ink-2">
             {user
-              ? 'Mọi chỉnh sửa tự động lưu tức thì trên trình duyệt và đồng bộ lên Cloudflare D1.'
+              ? 'Mọi chỉnh sửa tự lưu trên trình duyệt và đồng bộ lên tài khoản của bạn.'
               : 'Lưu tức thì trên trình duyệt này (kèm xuất file sao lưu .json). Đăng nhập để đồng bộ đa thiết bị và chia sẻ Link CV Online.'}
           </p>
         </div>
-        <div className="flex shrink-0 flex-wrap items-center gap-2.5">
-          <Button variant="secondary" onClick={() => setDialog({ type: 'import' })} className="gap-2">
-            <UploadSimple size={17} weight="bold" aria-hidden="true" />
-            Nhập CV cũ
-          </Button>
-          <Button onClick={() => openCreateModal('templates')} className="gap-2">
-            <Plus size={17} weight="bold" aria-hidden="true" />
-            Tạo CV mới
-          </Button>
-        </div>
+        {cvs !== null && cvs.length > 0 && (
+          <div className="flex shrink-0 flex-wrap items-center gap-2.5">
+            <Button variant="secondary" onClick={() => setDialog({ type: 'import' })} className="gap-2">
+              <UploadSimple size={17} weight="bold" aria-hidden="true" />
+              Nhập CV cũ
+            </Button>
+            <Button onClick={() => openCreateModal('templates')} className="gap-2">
+              <Plus size={17} weight="bold" aria-hidden="true" />
+              Tạo CV mới
+            </Button>
+          </div>
+        )}
       </div>
 
-      {/* Workspace KPI Strip */}
-      {cvs !== null && (
+      {/* Số liệu + checklist chỉ có nghĩa khi đã có ít nhất một CV */}
+      {cvs !== null && cvs.length > 0 && (
         <>
           <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
             <div className="rounded-sheet border border-rule bg-paper p-3.5 sm:p-4">
@@ -239,7 +240,7 @@ export function CvDashboard() {
             </div>
             <div className="rounded-sheet border border-rule bg-paper p-3.5 sm:p-4">
               <p className="text-xs font-semibold text-ink-3">Đồng bộ Cloud</p>
-              <p className="mt-1 text-lg font-bold text-ink">{user ? 'Đang bật D1' : 'Chỉ trên máy'}</p>
+              <p className="mt-1 text-lg font-bold text-ink">{user ? 'Đang bật' : 'Chỉ trên máy'}</p>
               <p className="mt-0.5 truncate text-xs text-ink-3">{user ? user.email : 'Bấm đăng nhập để sao lưu'}</p>
             </div>
           </div>
@@ -279,20 +280,16 @@ export function CvDashboard() {
         <div className="mt-8 overflow-hidden rounded-sheet border border-rule bg-paper">
           <div className="grid items-center gap-6 p-6 sm:p-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
             <div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-pen-wash px-3 py-1 text-xs font-bold text-pen">
-                <FileText size={14} weight="fill" aria-hidden="true" />
-                Khởi tạo CV chuẩn ATS trong 2 phút
-              </span>
-              <h2 className="mt-3 text-2xl font-bold text-ink">Bạn chưa có CV nào</h2>
+              <h2 className="text-2xl font-bold text-ink">Bạn chưa có CV nào</h2>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-2 sm:text-base">
                 Chọn từ 12 mẫu CV chuẩn ATS, bấm dùng ngay bộ mẫu viết sẵn theo từng ngành nghề, hoặc nhập CV cũ (.pdf / .docx) để AI bóc
                 tách tự động.
               </p>
               <div className="mt-5 flex flex-wrap gap-2.5">
-                <Button onClick={() => openCreateModal('templates')}>12 Mẫu CV chuẩn ATS</Button>
+                <Button onClick={() => openCreateModal('templates')}>Chọn mẫu CV</Button>
                 <Button variant="secondary" onClick={() => openCreateModal('kits')} className="gap-1.5">
                   <Briefcase size={16} weight="bold" aria-hidden="true" />
-                  Xem tất cả Role Kits
+                  Bộ CV theo ngành
                 </Button>
                 <Button variant="ghost" onClick={() => setDialog({ type: 'import' })}>
                   Nhập CV cũ
