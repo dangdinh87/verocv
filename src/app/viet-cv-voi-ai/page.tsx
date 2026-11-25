@@ -1,4 +1,3 @@
-import { Sparkle } from '@phosphor-icons/react/dist/ssr'
 import type { Metadata } from 'next'
 import { BeforeAfterCard } from '@/components/ui/before-after-card'
 import { Button } from '@/components/ui/button'
@@ -50,11 +49,7 @@ export default function AiWriterPage() {
       <div className="relative overflow-hidden">
         <section className="wrap grid items-start gap-10 pb-14 pt-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,32rem)] lg:gap-12 lg:pb-20 lg:pt-11">
           <div className="min-w-0 lg:pt-1.5">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-rule bg-paper px-3 py-1 text-xs font-bold text-pen">
-              <Sparkle size={13} weight="fill" aria-hidden="true" />
-              Cloudflare Workers AI Copilot
-            </span>
-            <h1 className="display mt-4 text-[clamp(2.15rem,4.5vw,3.45rem)] text-ink">
+            <h1 className="display text-[clamp(2.15rem,4.5vw,3.45rem)] text-ink">
               <span className="block">Bí chữ khi viết CV?</span>
               <span className="block text-pen">Để AI gợi ý, bạn quyết định</span>
             </h1>

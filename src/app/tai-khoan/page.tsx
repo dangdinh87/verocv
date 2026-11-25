@@ -112,10 +112,6 @@ export default function AccountPage() {
         <section className="rounded-sheet border border-rule bg-paper p-6">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-[54ch] space-y-2.5">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-pen/30 bg-pen-wash px-3 py-1 text-xs font-bold text-pen">
-                <CloudCheck size={14} weight="fill" aria-hidden="true" />
-                Cloudflare D1 Sync &amp; Recruiter Analytics
-              </span>
               <h1 className="display text-[clamp(1.65rem,3.2vw,2.2rem)] text-ink">
                 Tài khoản, Link CV Online &amp; Thống kê nhà tuyển dụng
               </h1>

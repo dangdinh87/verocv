@@ -1,4 +1,3 @@
-import { Sparkle } from '@phosphor-icons/react/dist/ssr'
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { MockInterviewRoom } from '@/components/interview/mock-interview-room'
@@ -13,7 +12,10 @@ const TIPS = [
   ['Situation (Bối cảnh)', 'Mở đầu bằng 1–2 câu nêu rõ công ty, quy mô dự án hoặc tình huống thực tế lúc đó.'],
   ['Task (Nhiệm vụ)', 'Chốt mục tiêu cụ thể bạn được giao hoặc điểm nghẽn mà cá nhân bạn cần giải quyết.'],
   ['Action (Hành động)', 'Dùng động từ chủ động ("Tôi đã trực tiếp…") để tách rõ đóng góp cá nhân và công cụ sử dụng.'],
-  ['Result (Kết quả & Số liệu)', 'Khép lại bằng con số thật: tăng/giảm bao nhiêu %, tiết kiệm bao nhiêu giờ hoặc phục vụ bao nhiêu người dùng.'],
+  [
+    'Result (Kết quả & Số liệu)',
+    'Khép lại bằng con số thật: tăng/giảm bao nhiêu %, tiết kiệm bao nhiêu giờ hoặc phục vụ bao nhiêu người dùng.',
+  ],
 ]
 
 export default function MockInterviewPage() {
@@ -21,39 +23,18 @@ export default function MockInterviewPage() {
     <section className="workspace-wrap py-6 lg:py-8">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-rule bg-paper px-3 py-1 text-xs font-bold text-pen">
-            <Sparkle size={13} weight="fill" aria-hidden="true" />
-            AI Mock Interview Studio · STAR Coach
-          </span>
-          <h1 className="display mt-2.5 text-[clamp(1.7rem,3.4vw,2.35rem)] text-ink">
-            Luyện phỏng vấn AI theo CV &amp; JD
-          </h1>
+          <h1 className="display text-[clamp(1.7rem,3.4vw,2.35rem)] text-ink">Luyện phỏng vấn AI theo CV &amp; JD</h1>
           <p className="mt-1 max-w-[54ch] text-sm leading-relaxed text-ink-2">
-            Nhập vai phỏng vấn 1-1: nhận bộ 6 câu hỏi hành vi, chuyên môn và khoảng trống CV–JD, kiểm tra cấu trúc STAR trực tiếp và chấm điểm kèm câu trả lời mẫu nâng cấp.
+            Nhập vai phỏng vấn 1-1: nhận bộ 6 câu hỏi hành vi, chuyên môn và khoảng trống CV–JD, kiểm tra cấu trúc STAR trực tiếp và chấm
+            điểm kèm câu trả lời mẫu nâng cấp.
           </p>
-        </div>
-
-        {/* AI Hiring Manager Persona Card */}
-        <div className="flex shrink-0 items-center gap-3.5 rounded-sheet border border-rule bg-paper px-4 py-3">
-          <img
-            src="/images/avatars/khanh-linh.jpg"
-            alt="Khánh Linh — AI Hiring Manager & STAR Coach"
-            className="size-12 shrink-0 rounded-full border border-rule object-cover"
-          />
-          <div className="min-w-0">
-            <p className="text-sm font-bold text-ink">Khánh Linh</p>
-            <p className="text-xs font-medium text-pen">AI Hiring Manager &amp; STAR Coach</p>
-            <p className="mt-0.5 text-[11px] text-ink-3">Đánh giá trực tiếp theo khung S–T–A–R &amp; KPI</p>
-          </div>
         </div>
       </div>
 
       <div className="mt-6">
         <Suspense
           fallback={
-            <div className="rounded-sheet border border-rule bg-paper p-6 text-sm text-ink-3">
-              Đang khởi tạo phòng luyện phỏng vấn AI…
-            </div>
+            <div className="rounded-sheet border border-rule bg-paper p-6 text-sm text-ink-3">Đang khởi tạo phòng luyện phỏng vấn AI…</div>
           }
         >
           <MockInterviewRoom />
@@ -61,9 +42,7 @@ export default function MockInterviewPage() {
       </div>
 
       <details className="smooth-details mt-8 rounded-sheet border border-rule bg-paper px-5 py-3.5 text-sm">
-        <summary className="cursor-pointer font-semibold text-ink">
-          Công thức trả lời STAR ghi điểm cao với nhà tuyển dụng
-        </summary>
+        <summary className="cursor-pointer font-semibold text-ink">Công thức trả lời STAR ghi điểm cao với nhà tuyển dụng</summary>
         <div className="mt-3 grid gap-3 border-t border-rule pt-3 sm:grid-cols-2">
           {TIPS.map(([term, desc]) => (
             <div key={term}>

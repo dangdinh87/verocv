@@ -39,10 +39,7 @@ export default function PricingPage() {
     <>
       <div className="relative overflow-hidden">
         <header className="wrap pb-10 pt-10 lg:pb-12 lg:pt-14">
-          <span className="inline-flex items-center rounded-full border border-rule bg-paper px-3.5 py-1 text-xs font-bold text-pen">
-            Minh bạch · Thanh toán VietQR tự động
-          </span>
-          <h1 className="display mt-4 text-[clamp(2.1rem,4.6vw,3.4rem)] text-ink">
+          <h1 className="display text-[clamp(2.1rem,4.6vw,3.4rem)] text-ink">
             <span className="block">Bắt đầu miễn phí.</span>
             <span className="block text-ink-2">Nâng cấp đúng đợt săn việc.</span>
           </h1>

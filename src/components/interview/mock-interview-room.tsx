@@ -1,14 +1,6 @@
 'use client'
 
-import {
-  ArrowRight,
-  Check,
-  CheckCircle,
-  Lightbulb,
-  Play,
-  Sparkle,
-  WarningCircle,
-} from '@phosphor-icons/react/dist/ssr'
+import { ArrowRight, Check, CheckCircle, Lightbulb, Play, Sparkle, WarningCircle } from '@phosphor-icons/react/dist/ssr'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import type { MockInterviewEvaluation, MockInterviewQuestion } from '@/app/api/ai/mock-interview/route'
@@ -17,6 +9,7 @@ import { SelectField, TextAreaField, TextField } from '@/components/ui/field'
 import { ScoreRing } from '@/components/ui/score-ring'
 import { listCvs, type CvRecord } from '@/lib/cv-repository'
 import { getApplications } from '@/lib/storage'
+import { AiCoachAvatar } from './ai-coach-avatar'
 import { getPersonaData } from '@/types/resume'
 
 const CATEGORY_LABEL: Record<MockInterviewQuestion['category'], { label: string; style: string }> = {
@@ -47,12 +40,14 @@ function detectLiveStarChecklist(answer: string): MockInterviewEvaluation['starB
   return {
     situation: /\b(khi|lúc|tại|trong dự án|bối cảnh|đội ngũ|khách hàng|công ty|quý|when|at|during|project|team)\b/i.test(lower),
     task: /\b(mục tiêu|nhiệm vụ|vấn đề|bài toán|yêu cầu|chỉ tiêu|cần phải|khó khăn|goal|task|target|challenge|problem)\b/i.test(lower),
-    action: /\b(tôi đã|mình đã|trực tiếp|xây dựng|triển khai|tối ưu|phân tích|đề xuất|phối hợp|thiết kế|built|led|implemented|optimized)\b/i.test(
-      lower,
-    ),
-    result: /\b(kết quả|giúp|đạt|tăng|giảm|rút ngắn|tiết kiệm|hoàn thành|cải thiện|result|achieved|increased|reduced|saved|improved)\b/i.test(
-      lower,
-    ),
+    action:
+      /\b(tôi đã|mình đã|trực tiếp|xây dựng|triển khai|tối ưu|phân tích|đề xuất|phối hợp|thiết kế|built|led|implemented|optimized)\b/i.test(
+        lower,
+      ),
+    result:
+      /\b(kết quả|giúp|đạt|tăng|giảm|rút ngắn|tiết kiệm|hoàn thành|cải thiện|result|achieved|increased|reduced|saved|improved)\b/i.test(
+        lower,
+      ),
     hasMetrics: /\d|%|gấp đôi|gấp ba|gấp rưỡi|double|triple/i.test(answer),
   }
 }
@@ -205,23 +200,15 @@ export function MockInterviewRoom() {
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-rule pb-4">
           <div>
             <h2 className="font-display text-lg font-bold text-ink">Thiết lập buổi phỏng vấn thử</h2>
-            <p className="text-sm text-ink-3">
-              Chọn CV của bạn và vị trí ứng tuyển để AI Coach mô phỏng 6 câu hỏi sát thực tế nhất.
-            </p>
+            <p className="text-sm text-ink-3">Chọn CV của bạn và vị trí ứng tuyển để AI Coach mô phỏng 6 câu hỏi sát thực tế nhất.</p>
           </div>
           {providerLabel && (
-            <span className="rounded-full border border-rule bg-desk px-3 py-1 text-xs font-semibold text-ink-2">
-              {providerLabel}
-            </span>
+            <span className="rounded-full border border-rule bg-desk px-3 py-1 text-xs font-semibold text-ink-2">{providerLabel}</span>
           )}
         </div>
 
         <div className="mt-4 grid gap-4 md:grid-cols-3">
-          <SelectField
-            label="CV tham chiếu"
-            value={selectedCvId}
-            onChange={(e) => setSelectedCvId(e.target.value)}
-          >
+          <SelectField label="CV tham chiếu" value={selectedCvId} onChange={(e) => setSelectedCvId(e.target.value)}>
             {cvs.length > 0 ? (
               cvs.map((cv) => (
                 <option key={cv.id} value={cv.id}>
@@ -348,7 +335,9 @@ export function MockInterviewRoom() {
             {/* Left: Question + Answer Input + Live STAR */}
             <div className="space-y-4 rounded-sheet border border-rule bg-paper p-5">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold ${CATEGORY_LABEL[currentQuestion.category].style}`}>
+                <span
+                  className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold ${CATEGORY_LABEL[currentQuestion.category].style}`}
+                >
                   {CATEGORY_LABEL[currentQuestion.category].label}
                 </span>
                 <button
@@ -402,9 +391,7 @@ export function MockInterviewRoom() {
                       <span
                         key={item.key}
                         className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors ${
-                          hit
-                            ? 'border-mint/40 bg-mint-wash text-mint'
-                            : 'border-rule bg-paper text-ink-3'
+                          hit ? 'border-mint/40 bg-mint-wash text-mint' : 'border-rule bg-paper text-ink-3'
                         }`}
                       >
                         {hit && <Check size={12} weight="bold" aria-hidden="true" />}
@@ -418,11 +405,7 @@ export function MockInterviewRoom() {
               </div>
 
               <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
-                <Button
-                  variant="secondary"
-                  disabled={activeIndex === 0}
-                  onClick={() => setActiveIndex((i) => Math.max(0, i - 1))}
-                >
+                <Button variant="secondary" disabled={activeIndex === 0} onClick={() => setActiveIndex((i) => Math.max(0, i - 1))}>
                   Câu trước
                 </Button>
                 <div className="flex flex-wrap gap-2">
@@ -451,19 +434,16 @@ export function MockInterviewRoom() {
             <div className="rounded-sheet border border-rule bg-paper p-5">
               {!currentEval ? (
                 <div className="flex h-full flex-col justify-center space-y-3 py-6 text-center">
-                  <img
-                    src="/images/avatars/khanh-linh.jpg"
-                    alt="Khánh Linh — AI Hiring Manager & STAR Coach"
-                    className="mx-auto size-16 rounded-full border border-rule object-cover"
-                  />
+                  <div className="mx-auto">
+                    <AiCoachAvatar size="lg" />
+                  </div>
                   <div>
-                    <h4 className="font-display text-base font-bold text-ink">
-                      Khánh Linh · AI Hiring Manager &amp; STAR Coach
-                    </h4>
+                    <h4 className="font-display text-base font-bold text-ink">AI Coach · chấm theo khung STAR</h4>
                     <p className="text-xs font-medium text-pen">Đang chờ câu trả lời của bạn</p>
                   </div>
                   <p className="mx-auto max-w-[36ch] text-sm leading-relaxed text-ink-2">
-                    Nhập câu trả lời ở khung bên trái rồi bấm <strong>“Chấm điểm &amp; Góp ý”</strong> để nhận phân tích S–T–A–R, câu trả lời mẫu cá nhân hoá từ CV và câu hỏi xoáy tiếp theo.
+                    Nhập câu trả lời ở khung bên trái rồi bấm <strong>“Chấm điểm &amp; Góp ý”</strong> để nhận phân tích S–T–A–R, câu trả
+                    lời mẫu cá nhân hoá từ CV và câu hỏi xoáy tiếp theo.
                   </p>
                 </div>
               ) : (
@@ -472,14 +452,8 @@ export function MockInterviewRoom() {
                     <ScoreRing score={currentEval.score} size={72} strokeWidth={6} label="Điểm" />
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <img
-                          src="/images/avatars/khanh-linh.jpg"
-                          alt="Khánh Linh"
-                          className="size-6 rounded-full border border-rule object-cover"
-                        />
-                        <p className="text-xs font-bold uppercase tracking-wider text-ink-3">
-                          Nhận xét từ Khánh Linh (AI Coach)
-                        </p>
+                        <AiCoachAvatar size="sm" />
+                        <p className="text-xs font-bold uppercase tracking-wider text-ink-3">Nhận xét của AI Coach</p>
                       </div>
                       <p className="mt-1 text-sm font-medium leading-relaxed text-ink">{currentEval.verdict}</p>
                     </div>
@@ -496,7 +470,11 @@ export function MockInterviewRoom() {
                             ok ? 'border-mint/30 bg-mint-wash text-mint' : 'border-seal/30 bg-seal/10 text-seal'
                           }`}
                         >
-                          {ok ? <CheckCircle size={12} weight="fill" aria-hidden="true" /> : <WarningCircle size={12} weight="fill" aria-hidden="true" />}
+                          {ok ? (
+                            <CheckCircle size={12} weight="fill" aria-hidden="true" />
+                          ) : (
+                            <WarningCircle size={12} weight="fill" aria-hidden="true" />
+                          )}
                           {item.short} · {item.label}
                         </span>
                       )
