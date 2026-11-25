@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers'
 import { PRICES } from '@/config/brand'
-import { getServerEnv } from '@/server/cf-env'
+import { getServerEnv, IS_DEV } from '@/server/cf-env'
 import { generateSessionToken, sha256Hex } from '@/server/crypto'
 import { getSaasDb, type DbUser, type UserPlanId } from '@/server/db/store'
 
@@ -118,7 +118,7 @@ export async function attachSessionCookie(token: string, expiresAt: string): Pro
   cookieStore.set(SESSION_COOKIE_NAME, token, {
     httpOnly: true,
     sameSite: 'lax',
-    secure: getServerEnv().NODE_ENV === 'production',
+    secure: !IS_DEV,
     path: '/',
     expires: new Date(expiresAt),
   })
@@ -150,7 +150,6 @@ export async function destroyCurrentSession(): Promise<void> {
 
 export function computePlanExpiry(planId: Exclude<UserPlanId, 'free'>, existingExpiresAt?: string | null): string {
   const days = PLAN_CATALOG[planId].durationDays ?? 30
-  const baseMs =
-    existingExpiresAt && existingExpiresAt > new Date().toISOString() ? new Date(existingExpiresAt).getTime() : Date.now()
+  const baseMs = existingExpiresAt && existingExpiresAt > new Date().toISOString() ? new Date(existingExpiresAt).getTime() : Date.now()
   return new Date(baseMs + days * 24 * 60 * 60 * 1000).toISOString()
 }

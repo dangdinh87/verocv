@@ -29,7 +29,7 @@ export function ThemeToggle({ className = '', showLabel = false }: { className?:
       <span className="theme-toggle-moon items-center justify-center" aria-hidden="true">
         <Moon size={18} weight="bold" />
       </span>
-      <span className="theme-toggle-sun items-center justify-center text-mint" aria-hidden="true">
+      <span className="theme-toggle-sun items-center justify-center text-ink-2" aria-hidden="true">
         <Sun size={18} weight="bold" />
       </span>
       {showLabel && (

@@ -88,7 +88,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
   ]
 
   const planId = user?.plan ?? quota?.planId ?? 'free'
-  const quotaText = quota ? `${quota.remaining}/${quota.dailyLimit} lượt` : '8 lượt AI/ngày'
+  const quotaText = quota ? `còn ${quota.remaining}/${quota.dailyLimit}` : '8 lượt/ngày'
   const quotaRatio = quota && quota.dailyLimit > 0 ? Math.min(100, Math.round((quota.remaining / quota.dailyLimit) * 100)) : 100
 
   return (
@@ -123,9 +123,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
               <MagnifyingGlass size={14} className="shrink-0" aria-hidden="true" />
               <span className="truncate">Tìm nhanh CV, Thư, Kanban…</span>
             </span>
-            <kbd className="shrink-0 rounded-[4px] border border-rule bg-paper px-1.5 py-0.5 text-[10px] font-bold text-ink-3">
-              ⌘K
-            </kbd>
+            <kbd className="shrink-0 rounded-[4px] border border-rule bg-paper px-1.5 py-0.5 text-[10px] font-bold text-ink-3">⌘K</kbd>
           </button>
         </div>
 
@@ -162,7 +160,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
         <div className="mt-auto space-y-2.5 border-t border-rule p-3">
           <div className="rounded-control border border-rule bg-desk p-2.5">
             <div className="flex items-center justify-between gap-2">
-              <span className="text-xs font-bold text-ink">AI Quota hôm nay</span>
+              <span className="text-xs font-bold text-ink">Lượt AI hôm nay</span>
               <span className="text-xs font-bold tabular-nums text-pen">{quotaText}</span>
             </div>
             <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-rule">

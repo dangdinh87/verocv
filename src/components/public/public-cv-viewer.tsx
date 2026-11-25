@@ -10,7 +10,6 @@ import {
   MagnifyingGlassMinus,
   MagnifyingGlassPlus,
   Printer,
-  Sparkle,
 } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
@@ -303,8 +302,7 @@ export function PublicCvViewer({ slug, refTag, initialDoc, initialProtected, not
           href="/"
           className="inline-flex items-center gap-2 rounded-full border border-rule bg-paper px-4 py-2 text-xs font-semibold text-ink-2 transition-colors hover:border-pen hover:text-pen"
         >
-          <Sparkle size={14} weight="fill" className="text-pen" aria-hidden="true" />
-          <span>Hồ sơ được tạo bằng {BRAND.name} AI Studio</span>
+          <span>Hồ sơ được tạo bằng {BRAND.name}</span>
           <span className="font-bold text-pen">Tạo CV miễn phí →</span>
         </Link>
       </footer>

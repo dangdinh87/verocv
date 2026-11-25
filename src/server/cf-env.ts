@@ -32,6 +32,13 @@ export type AppServerEnv = {
 
 const CF_CONTEXT_SYMBOL = Symbol.for('__cloudflare-context__')
 
+/**
+ * Chỉ true khi chạy `next dev`. Đọc đúng biểu thức `process.env.NODE_ENV` để Next thay giá trị lúc build;
+ * KHÔNG dùng getServerEnv().NODE_ENV cho việc mở/khoá tính năng: trên Worker biến đó có thể không được khai báo
+ * (undefined) và phép so "=== 'production'" sẽ âm thầm mở cổng.
+ */
+export const IS_DEV = process.env.NODE_ENV === 'development'
+
 export function getServerEnv(): AppServerEnv {
   const g = globalThis as Record<PropertyKey, unknown>
   const cfCtx = g[CF_CONTEXT_SYMBOL] as { env?: AppServerEnv } | undefined
@@ -65,11 +72,7 @@ export function getInfraMode(env = getServerEnv()): {
       ? 'd1-rest-api'
       : 'local-store'
 
-  const aiMode = env.AI
-    ? 'worker-binding'
-    : env.CLOUDFLARE_ACCOUNT_ID && env.CLOUDFLARE_API_TOKEN
-      ? 'workers-ai-rest'
-      : 'local-engine'
+  const aiMode = env.AI ? 'worker-binding' : env.CLOUDFLARE_ACCOUNT_ID && env.CLOUDFLARE_API_TOKEN ? 'workers-ai-rest' : 'local-engine'
 
   return { d1Mode, aiMode }
 }

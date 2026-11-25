@@ -159,7 +159,8 @@ export function VietQrCheckoutModal({
           <CheckCircle size={40} weight="fill" className="mx-auto text-mint" aria-hidden="true" />
           <h3 className="text-xl font-bold text-ink">Nâng cấp thành công: {session.planName}!</h3>
           <p className="text-sm text-ink-2">
-            Đơn hàng <code>{session.order.orderCode}</code> đã được kích hoạt. Toàn bộ quyền lợi AI Copilot &amp; Link CV Online đã sẵn sàng.
+            Đơn hàng <code>{session.order.orderCode}</code> đã được kích hoạt. Toàn bộ quyền lợi AI Copilot &amp; Link CV Online đã sẵn
+            sàng.
           </p>
           <Button onClick={onClose}>Tiếp tục sử dụng VeroCV</Button>
         </div>
@@ -169,7 +170,11 @@ export function VietQrCheckoutModal({
             <div className="flex flex-col items-center rounded-sheet border border-rule bg-desk p-4 text-center">
               {localQrDataUrl && (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={localQrDataUrl} alt={`Mã VietQR cho đơn ${session.order.orderCode}`} className="size-48 rounded-control border border-rule bg-paper p-2" />
+                <img
+                  src={localQrDataUrl}
+                  alt={`Mã VietQR cho đơn ${session.order.orderCode}`}
+                  className="size-48 rounded-control border border-rule bg-paper p-2"
+                />
               )}
               <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-pen">
                 <QrCode size={14} weight="bold" aria-hidden="true" />
@@ -219,9 +224,15 @@ export function VietQrCheckoutModal({
                 </Button>
               </div>
 
-              {process.env.NODE_ENV !== 'production' && (
+              {process.env.NODE_ENV === 'development' && (
                 <div className="pt-2">
-                  <Button variant="secondary" size="sm" disabled={confirming} onClick={() => void sandboxConfirm()} className="w-full gap-1.5">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    disabled={confirming}
+                    onClick={() => void sandboxConfirm()}
+                    className="w-full gap-1.5"
+                  >
                     <Sparkle size={15} weight="fill" className="text-pen" aria-hidden="true" />
                     {confirming ? 'Đang kích hoạt…' : 'Giả lập nhận Webhook VietQR thành công (Dev)'}
                   </Button>

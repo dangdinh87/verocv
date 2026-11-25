@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { computePlanExpiry, getCurrentUser, toPublicUser } from '@/server/auth'
-import { getServerEnv } from '@/server/cf-env'
+import { IS_DEV } from '@/server/cf-env'
 import { getSaasDb } from '@/server/db/store'
 import { jsonError, jsonOk } from '@/server/http'
 
@@ -9,7 +9,8 @@ const SandboxSchema = z.object({
 })
 
 export async function POST(req: Request) {
-  if (getServerEnv().NODE_ENV === 'production') {
+  // Fail-closed: chỉ mở ở `next dev`, mọi môi trường khác (kể cả NODE_ENV không khai báo) đều chặn.
+  if (!IS_DEV) {
     return jsonError('Tính năng giả lập thanh toán chỉ khả dụng ở môi trường phát triển.', 403)
   }
 

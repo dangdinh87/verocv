@@ -47,7 +47,7 @@ type LocalTelemetry = {
 }
 
 export default function AccountPage() {
-  const { user, quota, infra, loading, syncing, lastSyncedAt, openAuthModal, syncNow, logout } = useAuth()
+  const { user, quota, loading, syncing, lastSyncedAt, openAuthModal, syncNow, logout } = useAuth()
   const [links, setLinks] = useState<PublicLinkItem[]>([])
   const [orders, setOrders] = useState<OrderItem[]>([])
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null)
@@ -210,31 +210,19 @@ export default function AccountPage() {
             <div className="flex items-center justify-between gap-2">
               <h2 className="flex items-center gap-2 text-base font-bold text-ink">
                 <ChartLineUp size={18} className="text-pen" aria-hidden="true" />
-                Thống kê Nhà tuyển dụng xem CV
+                Biết khi nhà tuyển dụng mở CV
               </h2>
-              <span className="text-xs font-semibold text-ink-3">Thời gian thực</span>
             </div>
 
-            <div className="mt-4 space-y-3">
-              {[
-                { label: 'Lượt nhà tuyển dụng mở xem', value: '24 lượt', width: '78%', tone: 'bg-pen' },
-                { label: 'Lượt tải xuống PDF A4', value: '9 lượt', width: '48%', tone: 'bg-mint' },
-                { label: 'Lượt tải xuống Word (.docx)', value: '4 lượt', width: '28%', tone: 'bg-pen-dark' },
-              ].map((row) => (
-                <div key={row.label} className="space-y-1">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-medium text-ink-2">{row.label}</span>
-                    <span className="font-bold tabular-nums text-ink">{row.value}</span>
-                  </div>
-                  <div className="h-2 w-full overflow-hidden rounded-full bg-rule">
-                    <div className={`h-full rounded-full ${row.tone}`} style={{ width: row.width }} />
-                  </div>
-                </div>
-              ))}
-            </div>
+            {/* Chưa đăng nhập thì chưa có số liệu nào — chỉ nói sẽ đo gì, không hiện số minh hoạ. */}
+            <ul className="mt-3 space-y-1.5 text-sm text-ink-2">
+              <li>Lượt nhà tuyển dụng mở link CV</li>
+              <li>Lượt tải bản PDF và Word (.docx)</li>
+              <li>Thời điểm xem gần nhất của từng link</li>
+            </ul>
 
             <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-rule pt-3">
-              <span className="text-xs text-ink-3">Đăng nhập để kích hoạt Link CV &amp; bảng thống kê thật.</span>
+              <span className="text-xs text-ink-3">Đăng nhập để tạo link CV và bắt đầu đếm.</span>
               <Button size="sm" onClick={openAuthModal}>
                 Đăng nhập đồng bộ ngay
               </Button>
@@ -293,7 +281,7 @@ export default function AccountPage() {
         <section className="rounded-sheet border border-rule bg-paper p-5">
           <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-ink-3">
             <Sparkle size={14} weight="fill" className="text-pen" aria-hidden="true" />
-            Hạn mức AI Copilot hôm nay
+            Lượt AI hôm nay
           </p>
           <p className="mt-2 text-2xl font-extrabold tabular-nums text-ink">
             <span className="tabular-nums">{aiUsed}</span> / {aiLimit} lượt
@@ -305,14 +293,8 @@ export default function AccountPage() {
         </section>
 
         <section className="rounded-sheet border border-rule bg-paper p-5">
-          <p className="text-xs font-bold uppercase tracking-wider text-ink-3">Trạng thái hạ tầng Cloudflare</p>
-          <p className="mt-2 text-sm font-semibold text-ink">
-            Database: <span className="text-pen">{infra?.d1Mode ?? 'local-store'}</span>
-          </p>
-          <p className="mt-1 text-sm font-semibold text-ink">
-            AI Engine: <span className="text-mint">{infra?.aiMode ?? 'local-engine'}</span>
-          </p>
-          <p className="mt-2 text-xs text-ink-3">
+          <p className="text-xs font-bold uppercase tracking-wider text-ink-3">Đồng bộ</p>
+          <p className="mt-2 text-sm text-ink-2">
             {lastSyncedAt
               ? `Đồng bộ gần nhất: ${new Date(lastSyncedAt).toLocaleTimeString('vi-VN')}`
               : 'Tự động đồng bộ khi mở trình duyệt'}

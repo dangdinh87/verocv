@@ -1,6 +1,6 @@
 'use client'
 
-import { Check, CheckCircle, QrCode, ShieldCheck, Sparkle } from '@phosphor-icons/react/dist/ssr'
+import { Check, CheckCircle, FilePdf, QrCode, ShieldCheck } from '@phosphor-icons/react/dist/ssr'
 import { useState } from 'react'
 import { useAuth } from '@/components/auth/auth-provider'
 import { VietQrCheckoutModal, type PaidPlanId } from '@/components/billing/vietqr-checkout-modal'
@@ -41,7 +41,7 @@ const TRUST_PILLARS = [
     title: 'Hoàn tiền 7 ngày nếu nâng cấp nhầm',
     desc: 'Gửi mã đơn hàng qua email để được hỗ trợ kiểm tra và hoàn tiền.',
   },
-  { Icon: Sparkle, title: 'Xuất PDF & Word không watermark', desc: 'Mọi gói đều giữ trọn bản quyền hồ sơ, không gắn logo quảng cáo.' },
+  { Icon: FilePdf, title: 'Xuất PDF & Word không watermark', desc: 'Mọi gói đều giữ trọn bản quyền hồ sơ, không gắn logo quảng cáo.' },
 ] as const
 
 function Feature({ parts }: { parts: string[] }) {
@@ -119,10 +119,9 @@ export function PricingPlans() {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
                 <h2 id="goi-pro" className="inline-flex items-center gap-1.5 text-[1.65rem] font-bold">
-                  <Sparkle size={20} weight="fill" className="text-pen" aria-hidden="true" />
                   Pro
                 </h2>
-                <span className="rounded-full bg-pen-wash px-2.5 py-0.5 text-[0.7rem] font-bold text-pen">Phổ biến nhất</span>
+                <span className="rounded-full bg-pen-wash px-2.5 py-0.5 text-[0.7rem] font-bold text-pen">Đề xuất</span>
               </div>
               <div role="group" aria-label="Chu kỳ thanh toán" className="flex gap-1 rounded-full border border-rule bg-desk p-1">
                 {[

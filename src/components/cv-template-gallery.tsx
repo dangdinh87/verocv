@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Briefcase, Camera, Check, MagnifyingGlass, Palette, Sparkle, UserCircle } from '@phosphor-icons/react/dist/ssr'
+import { ArrowRight, Briefcase, Camera, Check, MagnifyingGlass, Palette, UserCircle } from '@phosphor-icons/react/dist/ssr'
 import { useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
 import { ROLE_STARTER_KITS, type RoleStarterKit } from '@/components/resume/resume-data'
@@ -97,7 +97,11 @@ export function CvTemplateGallery() {
             />
           </div>
 
-          <div role="group" aria-label="Lọc theo ảnh chân dung" className="inline-flex items-center gap-1 rounded-full border border-rule bg-paper p-1">
+          <div
+            role="group"
+            aria-label="Lọc theo ảnh chân dung"
+            className="inline-flex items-center gap-1 rounded-full border border-rule bg-paper p-1"
+          >
             <Camera size={15} className="ml-2 text-ink-3" aria-hidden="true" />
             {PHOTO_FILTERS.map((pf) => {
               const active = pf.id === photoFilter
@@ -221,8 +225,7 @@ export function CvTemplateGallery() {
       <section aria-labelledby="role-kits-heading" className="border-t border-rule pt-14">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-mint-wash px-3 py-1 text-xs font-semibold text-mint">
-              <Sparkle size={14} weight="fill" aria-hidden="true" />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-pen-wash px-3 py-1 text-xs font-semibold text-pen">
               Khởi tạo nhanh trong 1 chạm
             </span>
             <h2 id="role-kits-heading" className="display mt-3 text-[clamp(1.65rem,3vw,2.25rem)]">
