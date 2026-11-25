@@ -1,4 +1,4 @@
-# Hồ Sơ Xanh
+# VeroCV
 
 Công cụ làm **CV khổ A4/Letter**, **Thư xin việc** và **Bảng Kanban theo dõi ứng tuyển** ưu tiên trải nghiệm tiếng Việt (hỗ trợ song ngữ Việt – Anh), chạy hoàn toàn trực tiếp trên trình duyệt (**local-first**, không gửi dữ liệu cá nhân đi đâu, xuất PDF sắc nét không logo/dấu mờ).
 
@@ -6,7 +6,7 @@ Công cụ làm **CV khổ A4/Letter**, **Thư xin việc** và **Bảng Kanban 
 
 ## Tính năng nổi bật
 
-- **8 mẫu CV chuẩn in ấn & ATS**: *Kẻ ngang*, *Cột xanh*, *Bìa kraft*, *Thu gọn*, *Ảnh tròn*, *Mốc thời gian*, *Tối giản*, *Con dấu*.
+- **12 mẫu CV chuẩn in ấn & ATS**: *Kẻ ngang*, *Cột xanh*, *Bìa kraft*, *Thu gọn*, *Ảnh tròn*, *Mốc thời gian*, *Tối giản*, *Con dấu*, *Chuẩn Harvard*, *Công nghệ & AI*, *Hiện đại Product*, *Sáng tạo Studio*.
   - Chuyển đổi mẫu bất kỳ lúc nào, bảo toàn 100% nội dung (kể cả ngoại ngữ, giới thiệu, mục phụ, nhiều liên kết hồ sơ, ảnh chân dung và các mục tự thêm).
   - Giao diện biên tập 2 chế độ chuẩn FlowCV (**Nội dung hồ sơ** dạng thẻ Accordion kéo-thả & **Tuỳ chỉnh thiết kế**):
     - Bật/tắt **ẩn tạm bằng biểu tượng Mắt** cho từng công việc, học vấn, ngoại ngữ, ảnh chân dung hoặc cả một mục lớn mà không mất dữ liệu.
@@ -38,8 +38,11 @@ Công cụ làm **CV khổ A4/Letter**, **Thư xin việc** và **Bảng Kanban 
 
 Ẩn dụ xuyên suốt là **bìa hồ sơ xin việc giấy kraft và bút bi xanh**:
 
-- Bảng màu token duy nhất trong `src/app/globals.css`: `ink`, `ink-2`, `ink-3`, `pen`, `pen-dark`, `pen-wash`, `seal`, `kraft`, `kraft-deep`, `desk`, `paper`, `rule`.
-- **Thẻ phẳng, viền `1px rule`, không đổ bóng (`shadow-*`)**.
+- Bảng màu token duy nhất trong `src/app/globals.css` (light + `[data-theme='dark']`): mực than chì `ink`/`ink-2`/`ink-3`, mực bút bi xanh dương `pen`/`pen-dark`/`pen-wash` (màu nhấn + link), giấy `desk`/`paper`/`rule`, giấy kraft `kraft`/`kraft-deep`. Màu trạng thái chỉ mang nghĩa trạng thái: `mint` = tốt/thành công, `ochre` = đang diễn ra, `seal` = lỗi/nguy hiểm. Không hardcode hex trong component (trừ màu nhấn của chính tờ CV, là dữ liệu người dùng).
+- **Thẻ phẳng (`Card`), viền `1px rule`, không đổ bóng, không gradient trang trí**, không hiệu ứng chạy liên tục (viền xoay, marquee, vệt sáng theo chuột). Icon ✦ chỉ dành cho tính năng AI.
+- **Motion** (token trong `@theme`): 120 ms phản hồi (hover/nhấn), 160 ms mặc định cho mọi `transition-*`, 220 ms cho thứ xuất hiện (`animate-reveal`, dialog). `ease-out` cho thứ đi vào, `ease-in-out` cho thứ đổi chỗ. Dialog dùng class `sheet-dialog` (nổi lên + backdrop màu cố định), accordion `<details>` dùng `smooth-details`. `prefers-reduced-motion` tắt mọi chuyển động trên toàn app.
+- **Nút**: `Button` có `primary` / `secondary` / `ghost` / `danger` (hành động không hoàn tác được); không tự chế nút màu.
+- **Không số liệu/lời khen bịa**: con số trên giao diện phải đến từ dữ liệu thật; chưa có dữ liệu thì mô tả sẽ đo gì, không hiện số minh hoạ.
 - Trợ năng đầy đủ: hộp thoại `<dialog>` chuẩn trình duyệt, liên kết bỏ qua điều hướng (`Skip to content`), phím mũi tên cho tab, thông báo tiếng Việt cho trình đọc màn hình khi kéo-thả, cỡ chữ ô nhập tối thiểu `16px` tránh tự phóng to trên iOS.
 
 ---

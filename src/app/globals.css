@@ -210,48 +210,6 @@
   }
 }
 
-/* Hero: the label on the folder is "written", then the CV rises out of it. */
-@keyframes write {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-@keyframes rise {
-  from {
-    transform: translateY(16%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-@keyframes stamp {
-  0% {
-    opacity: 0;
-    transform: rotate(-14deg) scale(1.5);
-  }
-  60% {
-    opacity: 1;
-    transform: rotate(-14deg) scale(0.94);
-  }
-  100% {
-    opacity: 1;
-    transform: rotate(-14deg) scale(1);
-  }
-}
-.hero-write {
-  animation: write 1s steps(24, end) both;
-  animation-delay: var(--d, 0s);
-}
-.hero-rise {
-  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 1.5s both;
-}
-.hero-stamp {
-  animation: stamp 0.45s cubic-bezier(0.3, 0.9, 0.3, 1) 2.5s both;
-}
-
 /* Dialog (Modal dùng <dialog> gốc): nổi lên nhẹ + backdrop mờ dần. @starting-style cho phép animate lúc showModal(). */
 dialog.sheet-dialog {
   transition:

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Be_Vietnam_Pro, Lora, Patrick_Hand, Plus_Jakarta_Sans, Source_Serif_4, Space_Grotesk } from 'next/font/google'
+import { Be_Vietnam_Pro, Lora, Patrick_Hand, Plus_Jakarta_Sans, Source_Serif_4 } from 'next/font/google'
 import { AuthProvider } from '@/components/auth/auth-provider'
 import { SiteChrome } from '@/components/site-chrome'
 import { ThemeProvider } from '@/components/theme/theme-provider'
@@ -10,12 +10,6 @@ const beVietnam = Be_Vietnam_Pro({
   subsets: ['vietnamese', 'latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-be-vietnam',
-  display: 'swap',
-})
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['vietnamese', 'latin'],
-  weight: ['500', '700'],
-  variable: '--font-space-grotesk',
   display: 'swap',
 })
 const patrickHand = Patrick_Hand({
@@ -63,7 +57,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang="vi"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${beVietnam.variable} ${spaceGrotesk.variable} ${patrickHand.variable} ${sourceSerif.variable} ${jakartaSans.variable} ${loraSerif.variable}`}
+      className={`${beVietnam.variable} ${patrickHand.variable} ${sourceSerif.variable} ${jakartaSans.variable} ${loraSerif.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
