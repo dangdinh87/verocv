@@ -279,7 +279,7 @@ function ApplicationForm({ application, initialDraft, defaultColumn, cvs, letter
               <div className="flex flex-wrap items-end gap-2">
                 <TextField
                   className="flex-1"
-                  label="Đường dẫn tin tuyển dụng (Job URL Clipper)"
+                  label="Đường dẫn tin tuyển dụng"
                   type="url"
                   inputMode="url"
                   optional

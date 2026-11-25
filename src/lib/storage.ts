@@ -10,13 +10,23 @@ import type { JobApplication, LetterDocument } from '@/types/resume'
 export const LETTER_KEY = 'hsx_letter_documents'
 export const APPLICATION_KEY = 'hsx_kanban_applications'
 
+/** Sự kiện trong cùng tab: `storage` của trình duyệt chỉ bắn sang các tab KHÁC, không bắn ở tab vừa ghi. */
+const SAME_TAB_EVENT = 'hsx-storage-change'
+
 export function subscribeToStorageKey(key: string, onChange: () => void): () => void {
   if (typeof window === 'undefined') return () => {}
   const handler = (event: StorageEvent) => {
     if (event.key === null || event.key === key) onChange()
   }
+  const sameTabHandler = (event: Event) => {
+    if ((event as CustomEvent<string>).detail === key) onChange()
+  }
   window.addEventListener('storage', handler)
-  return () => window.removeEventListener('storage', handler)
+  window.addEventListener(SAME_TAB_EVENT, sameTabHandler)
+  return () => {
+    window.removeEventListener('storage', handler)
+    window.removeEventListener(SAME_TAB_EVENT, sameTabHandler)
+  }
 }
 
 function readList<T extends { id: string }>(key: string): T[] {
@@ -33,10 +43,11 @@ function readList<T extends { id: string }>(key: string): T[] {
 function writeList<T>(key: string, list: T[]): boolean {
   try {
     localStorage.setItem(key, JSON.stringify(list))
-    return true
   } catch {
     return false
   }
+  window.dispatchEvent(new CustomEvent(SAME_TAB_EVENT, { detail: key }))
+  return true
 }
 
 function upsert<T extends { id: string; updatedAt: string }>(key: string, doc: T): boolean {

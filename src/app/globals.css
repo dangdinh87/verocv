@@ -28,6 +28,10 @@
   --color-desk: #f7f4ee;
   --color-paper: #ffffff;
   --color-rule: #e3dccf;
+  /* Trạng thái 'đang diễn ra' (vd. cột Phỏng vấn). */
+  --color-ochre: #9a6212;
+  /* Chữ màu kraft trên bề mặt luôn tối (footer) — không đổi theo theme. */
+  --color-kraft-on-dark: #d8c4a0;
 
   --radius-sheet: 12px;
   --radius-control: 8px;
@@ -75,6 +79,7 @@
   --color-seal: #f07a6c;
   --color-kraft: #2a251c;
   --color-kraft-deep: #3c3428;
+  --color-ochre: #e0b35a;
   color-scheme: dark;
 }
 

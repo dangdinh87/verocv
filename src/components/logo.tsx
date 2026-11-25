@@ -22,12 +22,12 @@ export function Logo({ inverted = false, badgeText = 'STUDIO' }: { inverted?: bo
         <span
           className={`whitespace-nowrap text-[1.2rem] font-extrabold tracking-[-0.03em] sm:text-[1.25rem] ${inverted ? 'text-white' : 'text-ink'}`}
         >
-          Vero<span className={inverted ? 'text-kraft-deep' : 'text-pen'}>CV</span>
+          Vero<span className={inverted ? 'text-kraft-on-dark' : 'text-pen'}>CV</span>
         </span>
         {badgeText !== false && (
           <span
             className={`max-xs:hidden shrink-0 whitespace-nowrap rounded-full px-1.5 py-0.5 text-[0.58rem] font-extrabold uppercase tracking-wider ${
-              inverted ? 'border border-white/20 bg-white/10 text-kraft-deep' : 'border border-pen/25 bg-pen-wash text-pen'
+              inverted ? 'border border-white/20 bg-white/10 text-kraft-on-dark' : 'border border-pen/25 bg-pen-wash text-pen'
             }`}
           >
             {badgeText}

@@ -61,12 +61,13 @@ import { ApplicationDialog } from './application-dialog'
 
 const COLUMN_PREFIX = 'col:'
 
-const COLUMN_ACCENT: Record<KanbanColumnId, { border: string; dot: string }> = {
-  wishlist: { border: 'border-t-2 border-t-ink-3', dot: 'bg-ink-3' },
-  applied: { border: 'border-t-2 border-t-pen', dot: 'bg-pen' },
-  interview: { border: 'border-t-2 border-t-kraft-deep', dot: 'bg-kraft-deep' },
-  offer: { border: 'border-t-2 border-t-mint', dot: 'bg-mint' },
-  rejected: { border: 'border-t-2 border-t-seal', dot: 'bg-seal' },
+// Trạng thái cột chỉ thể hiện bằng chấm màu cạnh tên — không thêm vạch màu trên đầu cột.
+const COLUMN_DOT: Record<KanbanColumnId, string> = {
+  wishlist: 'bg-ink-3',
+  applied: 'bg-pen',
+  interview: 'bg-ochre',
+  offer: 'bg-mint',
+  rejected: 'bg-seal',
 }
 
 // Prefer the column under the pointer (so dropping on empty space works), else the nearest card.
@@ -157,7 +158,7 @@ function CardBody({ card, cvs, letters }: { card: JobApplication; cvs: CvRecord[
         )}
         <Link
           href={`/luyen-phong-van?appId=${encodeURIComponent(card.id)}`}
-          className="inline-flex items-center gap-1 font-semibold text-mint hover:underline"
+          className="inline-flex items-center gap-1 font-semibold text-pen hover:underline"
         >
           <Sparkle size={12} weight="fill" aria-hidden="true" />
           Phỏng vấn AI
@@ -220,17 +221,17 @@ function KanbanCard({
       <div className="min-w-0">
         <CardBody card={card} cvs={cvs} letters={letters} />
       </div>
-      <div className="mt-2.5 flex items-center justify-between gap-1 border-t border-rule pt-2 text-[11px]">
+      {/* Tiến tới là thao tác chính → giữ tên cột; lùi về chỉ là mũi tên (tên cột trong title + sr-only) để hai nút không cùng bị cắt chữ. */}
+      <div className="mt-2.5 flex items-center justify-between gap-1 border-t border-rule pt-2 text-xs">
         {prev ? (
           <button
             type="button"
             title={`Chuyển về ${prev.name}`}
             onClick={() => onMove(card, -1)}
-            className="inline-flex min-w-0 cursor-pointer items-center gap-1 rounded-control px-1.5 py-1 font-medium text-ink-2 hover:bg-ink/[0.06] hover:text-ink"
+            className="inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-control text-ink-3 hover:bg-ink/[0.06] hover:text-ink"
           >
-            <ArrowLeft size={11} className="shrink-0" aria-hidden="true" />
-            <span className="sr-only">Chuyển về</span>
-            <span className="truncate">{prev.name}</span>
+            <ArrowLeft size={13} aria-hidden="true" />
+            <span className="sr-only">Chuyển về {prev.name}</span>
           </button>
         ) : (
           <span />
@@ -244,7 +245,7 @@ function KanbanCard({
           >
             <span className="sr-only">Chuyển sang</span>
             <span className="truncate">{next.name}</span>
-            <ArrowRight size={11} className="shrink-0" aria-hidden="true" />
+            <ArrowRight size={13} className="shrink-0" aria-hidden="true" />
           </button>
         )}
       </div>
@@ -271,18 +272,18 @@ function KanbanColumn({
 }) {
   // The column itself is a drop target, so a card can be dropped into an empty column.
   const { setNodeRef, isOver } = useDroppable({ id: `${COLUMN_PREFIX}${column.id}` })
-  const accent = COLUMN_ACCENT[column.id]
+  const dot = COLUMN_DOT[column.id]
 
   return (
     <section
       aria-label={`${column.name}, ${cards.length} thẻ`}
-      className={`flex min-h-[17rem] flex-col rounded-sheet border p-3 ${accent.border} ${
+      className={`flex min-h-[17rem] flex-col rounded-sheet border p-3 transition-colors ${
         isOver ? 'border-pen bg-pen-wash/40' : 'border-rule bg-ink/[0.03]'
       }`}
     >
       <div className="flex items-center justify-between gap-1.5 px-0.5 pb-2.5">
         <div className="flex min-w-0 items-center gap-1.5">
-          <span className={`size-2 shrink-0 rounded-full ${accent.dot}`} aria-hidden="true" />
+          <span className={`size-2 shrink-0 rounded-full ${dot}`} aria-hidden="true" />
           <h3 className="whitespace-nowrap text-[0.82rem] font-bold tracking-tight text-ink">{column.name}</h3>
         </div>
         <span className="shrink-0 rounded-full border border-rule bg-paper px-2 py-0.5 text-xs font-semibold tabular-nums text-ink-3">
@@ -508,12 +509,10 @@ export function KanbanTracker() {
       {/* Single Unified Page Header */}
       <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <span className="inline-flex items-center rounded-full border border-rule bg-paper px-3 py-1 text-xs font-bold text-pen">
-            Kanban · Job Clipper · Phỏng vấn STAR
-          </span>
-          <h1 className="display mt-2.5 text-[clamp(1.7rem,3.4vw,2.35rem)] text-ink">Bảng theo dõi ứng tuyển</h1>
+          <h1 className="display text-[clamp(1.7rem,3.4vw,2.35rem)] text-ink">Bảng theo dõi ứng tuyển</h1>
           <p className="mt-1 max-w-[60ch] text-sm leading-relaxed text-ink-2">
-            Hút JD từ đường dẫn, tạo biến thể CV khớp JD và theo dõi từng vòng phỏng vấn. Tự động lưu cục bộ và đồng bộ Cloud khi đăng nhập.
+            Dán link tin tuyển dụng để tạo thẻ, rồi theo dõi từng vòng tới khi có offer. Lưu ngay trên trình duyệt; đăng nhập để đồng bộ
+            giữa các máy.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2 shrink-0">
@@ -575,45 +574,47 @@ export function KanbanTracker() {
         )}
       </section>
 
-      {/* 4-Card Pipeline Funnel KPI Strip */}
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4" aria-label="Thống kê phễu ứng tuyển">
-        <div className="rounded-sheet border border-rule bg-paper p-3.5">
-          <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-ink-3">Tổng vị trí</p>
-            <Briefcase size={16} className="text-pen" aria-hidden="true" />
+      {/* Số liệu phễu — chỉ hiện khi đã có ít nhất một vị trí (toàn số 0 không nói được gì). */}
+      {totalApps > 0 && (
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4" aria-label="Thống kê phễu ứng tuyển">
+          <div className="rounded-sheet border border-rule bg-paper p-3.5">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold text-ink-3">Tổng vị trí</p>
+              <Briefcase size={16} className="text-pen" aria-hidden="true" />
+            </div>
+            <p className="mt-1 font-display text-2xl font-extrabold text-ink">
+              <span className="tabular-nums">{totalApps}</span>
+            </p>
           </div>
-          <p className="mt-1 font-display text-2xl font-extrabold text-ink">
-            <span className="tabular-nums">{totalApps}</span>
-          </p>
-        </div>
-        <div className="rounded-sheet border border-rule bg-paper p-3.5">
-          <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-ink-3">Đang phỏng vấn</p>
-            <ChatsCircle size={16} className="text-pen" aria-hidden="true" />
+          <div className="rounded-sheet border border-rule bg-paper p-3.5">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold text-ink-3">Đang phỏng vấn</p>
+              <ChatsCircle size={16} className="text-pen" aria-hidden="true" />
+            </div>
+            <p className="mt-1 font-display text-2xl font-extrabold text-pen">
+              <span className="tabular-nums">{interviewingCount}</span>
+            </p>
           </div>
-          <p className="mt-1 font-display text-2xl font-extrabold text-pen">
-            <span className="tabular-nums">{interviewingCount}</span>
-          </p>
-        </div>
-        <div className="rounded-sheet border border-rule bg-paper p-3.5">
-          <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-ink-3">Tỷ lệ vào phỏng vấn</p>
-            <TrendUp size={16} className="text-ink-2" aria-hidden="true" />
+          <div className="rounded-sheet border border-rule bg-paper p-3.5">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold text-ink-3">Tỷ lệ vào phỏng vấn</p>
+              <TrendUp size={16} className="text-ink-2" aria-hidden="true" />
+            </div>
+            <p className="mt-1 font-display text-2xl font-extrabold text-ink">
+              <span className="tabular-nums">{interviewRate}%</span>
+            </p>
           </div>
-          <p className="mt-1 font-display text-2xl font-extrabold text-ink">
-            <span className="tabular-nums">{interviewRate}%</span>
-          </p>
-        </div>
-        <div className="rounded-sheet border border-rule bg-paper p-3.5">
-          <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-ink-3">Offer nhận được</p>
-            <Trophy size={16} className="text-mint" aria-hidden="true" />
+          <div className="rounded-sheet border border-rule bg-paper p-3.5">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold text-ink-3">Offer nhận được</p>
+              <Trophy size={16} className="text-mint" aria-hidden="true" />
+            </div>
+            <p className="mt-1 font-display text-2xl font-extrabold text-mint">
+              <span className="tabular-nums">{offerCount}</span>
+            </p>
           </div>
-          <p className="mt-1 font-display text-2xl font-extrabold text-mint">
-            <span className="tabular-nums">{offerCount}</span>
-          </p>
         </div>
-      </div>
+      )}
 
       {/* Toolbar: AnimatedTabs View Switcher + Search + Quick Filters */}
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
@@ -639,7 +640,7 @@ export function KanbanTracker() {
               aria-label="Tìm vị trí ứng tuyển"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Tìm công ty, vị trí, địa điểm…"
+              placeholder="Tìm công ty, vị trí…"
               className="h-9 w-full rounded-control border border-rule bg-paper pl-9 pr-8 text-sm text-ink placeholder:text-ink-3/80 focus-visible:border-pen focus-visible:outline-none"
             />
             {search && (
