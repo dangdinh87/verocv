@@ -18,7 +18,7 @@ function PrivacySafeCard({ subtitle }: { subtitle: string }) {
         flexDirection: 'column',
         justifyContent: 'space-between',
         padding: '64px',
-        background: 'linear-gradient(135deg, #121315 0%, #1a1c20 55%, #1c2440 100%)',
+        background: '#1a1c20',
         color: '#efebe3',
         fontFamily: 'sans-serif',
       }}
@@ -114,7 +114,7 @@ export default async function PublicCvOpenGraphImage({ params }: { params: Promi
         flexDirection: 'column',
         justifyContent: 'space-between',
         padding: '56px 64px',
-        background: 'linear-gradient(135deg, #121315 0%, #1a1c20 60%, #1c2440 100%)',
+        background: '#1a1c20',
         color: '#efebe3',
         fontFamily: 'sans-serif',
       }}

@@ -561,13 +561,9 @@ export function CvDashboard() {
               <Button variant="ghost" onClick={() => setDialog(null)} data-autofocus>
                 Giữ lại
               </Button>
-              <button
-                type="button"
-                onClick={() => void onDelete(dialog.cv)}
-                className="inline-flex h-11 cursor-pointer items-center justify-center rounded-control bg-seal px-5 font-semibold text-white hover:opacity-90"
-              >
+              <Button variant="danger" onClick={() => void onDelete(dialog.cv)}>
                 Xoá CV
-              </button>
+              </Button>
             </div>
           </>
         )}

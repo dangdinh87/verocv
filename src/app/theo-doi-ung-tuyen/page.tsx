@@ -23,7 +23,7 @@ export default function JobTrackerPage() {
     <section className="workspace-wrap py-6 lg:py-8">
       <KanbanTracker />
 
-      <details className="mt-8 rounded-sheet border border-rule bg-paper px-5 py-3.5 text-sm">
+      <details className="smooth-details mt-8 rounded-sheet border border-rule bg-paper px-5 py-3.5 text-sm">
         <summary className="cursor-pointer font-semibold text-ink">
           Hướng dẫn nhanh &amp; Câu hỏi thường gặp về Bảng ứng tuyển
         </summary>

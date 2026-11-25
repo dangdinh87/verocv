@@ -63,7 +63,7 @@ export function Tabs<T extends string>({
           )
         })}
       </div>
-      <div role="tabpanel" id={`${base}-panel`} aria-labelledby={`${base}-tab-${value}`} className="pt-5">
+      <div key={value} role="tabpanel" id={`${base}-panel`} aria-labelledby={`${base}-tab-${value}`} className="animate-fade-in pt-5">
         {children}
       </div>
     </div>

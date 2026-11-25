@@ -72,21 +72,11 @@ export function RichTextAreaField({ label, hint, className = '', optional, value
           {optional && <span className="ml-1 font-normal text-ink-3">(không bắt buộc)</span>}
         </label>
         <div className="flex flex-wrap items-center gap-1" role="toolbar" aria-label="Định dạng nhanh">
-          <button
-            type="button"
-            title="In đậm (Ctrl+B)"
-            onClick={() => wrapSelection('**', '**', 'nổi bật')}
-            className={toolBtnCls}
-          >
+          <button type="button" title="In đậm (Ctrl+B)" onClick={() => wrapSelection('**', '**', 'nổi bật')} className={toolBtnCls}>
             <TextB size={13} weight="bold" aria-hidden="true" />
             <span>Đậm</span>
           </button>
-          <button
-            type="button"
-            title="In nghiêng (Ctrl+I)"
-            onClick={() => wrapSelection('*', '*', 'nhấn mạnh')}
-            className={toolBtnCls}
-          >
+          <button type="button" title="In nghiêng (Ctrl+I)" onClick={() => wrapSelection('*', '*', 'nhấn mạnh')} className={toolBtnCls}>
             <TextItalic size={13} weight="bold" aria-hidden="true" />
             <span>Nghiêng</span>
           </button>

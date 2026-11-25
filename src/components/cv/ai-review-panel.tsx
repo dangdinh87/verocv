@@ -360,7 +360,7 @@ export function AiReviewPanel({
                 strokeLinecap="round"
                 strokeDasharray={circumference}
                 strokeDashoffset={dashOffset}
-                className={`stroke-current transition-all duration-300 ${tone.stroke}`}
+                className={`stroke-current transition-[stroke-dashoffset] duration-300 ${tone.stroke}`}
               />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
@@ -421,7 +421,7 @@ export function AiReviewPanel({
                   <span className="font-bold tabular-nums text-ink">{val}/100</span>
                 </div>
                 <div className="h-1.5 w-full overflow-hidden rounded-full bg-rule">
-                  <div className={`h-full rounded-full transition-all duration-300 ${barColor}`} style={{ width: `${val}%` }} />
+                  <div className={`h-full rounded-full transition-[width] duration-300 ${barColor}`} style={{ width: `${val}%` }} />
                 </div>
               </div>
             )

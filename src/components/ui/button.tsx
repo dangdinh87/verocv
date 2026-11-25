@@ -2,12 +2,14 @@ import Link from 'next/link'
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 const BASE =
-  'inline-flex items-center justify-center gap-2 rounded-control font-semibold transition-colors duration-150 whitespace-nowrap cursor-pointer disabled:opacity-50 disabled:pointer-events-none'
+  'inline-flex items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap cursor-pointer select-none transition-[background-color,border-color,color,transform] duration-[120ms] active:translate-y-px disabled:opacity-50 disabled:pointer-events-none'
 
 const VARIANTS = {
   primary: 'bg-pen text-white hover:bg-pen-dark',
   secondary: 'border border-rule bg-paper text-ink hover:border-ink/30 hover:bg-desk',
   ghost: 'text-ink-2 hover:bg-ink/[0.05] hover:text-ink',
+  /** Hành động không hoàn tác được (xoá). */
+  danger: 'bg-seal text-white hover:bg-seal/90',
 } as const
 
 const SIZES = {

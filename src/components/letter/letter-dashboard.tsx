@@ -397,18 +397,17 @@ export function LetterDashboard() {
               <Button variant="ghost" onClick={() => setDialog(null)} data-autofocus>
                 Giữ lại
               </Button>
-              <button
-                type="button"
+              <Button
+                variant="danger"
                 onClick={() => {
                   deleteLetter(dialog.letter.id)
                   setDialog(null)
                   reload()
                   setNotice(`Đã xoá "${dialog.letter.title}".`)
                 }}
-                className="inline-flex h-11 cursor-pointer items-center justify-center rounded-control bg-seal px-5 font-semibold text-white hover:opacity-90"
               >
                 Xoá thư
-              </button>
+              </Button>
             </div>
           </>
         )}

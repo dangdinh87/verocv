@@ -3,7 +3,6 @@
 import {
   ArrowLeft,
   Briefcase,
-  CaretDown,
   CaretRight,
   CheckCircle,
   CircleNotch,
@@ -24,7 +23,17 @@ import {
 } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useCallback, useEffect, useId, useMemo, useRef, useState, type ComponentType, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type ComponentType,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type ReactNode,
+} from 'react'
 import { useAuth } from '@/components/auth/auth-provider'
 import { defaultSectionTitle, printBackdrop } from '@/components/resume/resume-paper'
 import { MultiPagePreviewSection } from '@/components/cv/preview-section'
@@ -155,11 +164,12 @@ function SectionAccordionCard({
           ) : (
             badge && <span className="shrink-0 text-xs font-medium text-ink-3">{badge}</span>
           )}
-          {expanded ? (
-            <CaretDown size={16} weight="bold" className="shrink-0 text-ink-3" aria-hidden="true" />
-          ) : (
-            <CaretRight size={16} weight="bold" className="shrink-0 text-ink-3" aria-hidden="true" />
-          )}
+          <CaretRight
+            size={16}
+            weight="bold"
+            className={`shrink-0 text-ink-3 transition-transform ${expanded ? 'rotate-90' : ''}`}
+            aria-hidden="true"
+          />
         </button>
         {onToggleHide && (
           <button
@@ -173,7 +183,7 @@ function SectionAccordionCard({
           </button>
         )}
       </div>
-      {expanded && <div className="border-t border-rule px-3.5 pb-4 pt-4 sm:px-4">{children}</div>}
+      {expanded && <div className="animate-reveal border-t border-rule px-3.5 pb-4 pt-4 sm:px-4">{children}</div>}
     </div>
   )
 }
@@ -575,10 +585,6 @@ export function CvEditor({ id }: { id: string }) {
             onOpenPalette={() => setPaletteOpen(true)}
             onOpenShortcuts={() => setShortcutsOpen(true)}
             onOpenAudit={() => openAudit('audit')}
-            onOpenReview={() => {
-              setPrimaryTab('review')
-              setPane('form')
-            }}
             onOpenShare={() => setShareOpen(true)}
             onOpenVersions={() => setVersionsOpen(true)}
           />

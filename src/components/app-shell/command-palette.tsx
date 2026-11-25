@@ -278,7 +278,7 @@ function CommandPaletteDialog({ onClose }: { onClose: () => void }) {
       onClick={(e) => {
         if (e.target === dialogRef.current) onClose()
       }}
-      className="m-auto mt-14 max-h-[78dvh] w-[calc(100%-2rem)] max-w-xl overflow-hidden rounded-sheet border border-rule bg-paper p-0 text-ink backdrop:bg-ink/45 sm:mt-20"
+      className="sheet-dialog m-auto mt-14 max-h-[78dvh] w-[calc(100%-2rem)] max-w-xl overflow-hidden rounded-sheet border border-rule bg-paper p-0 text-ink sm:mt-20"
     >
       <div className="flex items-center gap-2.5 border-b border-rule px-4 py-3">
         <MagnifyingGlass size={18} className="shrink-0 text-ink-3" aria-hidden="true" />

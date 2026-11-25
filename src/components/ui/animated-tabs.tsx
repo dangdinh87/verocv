@@ -37,10 +37,8 @@ export function AnimatedTabs<T extends string>({
             role="tab"
             aria-selected={active}
             onClick={() => onChange(item.id)}
-            className={`inline-flex cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-[6px] px-2.5 py-1.5 text-xs font-semibold transition-all duration-150 ${
-              active
-                ? 'border border-rule bg-paper text-ink'
-                : 'border border-transparent text-ink-2 hover:bg-paper/60 hover:text-ink'
+            className={`inline-flex cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-[6px] px-2.5 py-1.5 text-xs font-semibold transition-colors ${
+              active ? 'border border-rule bg-paper text-ink' : 'border border-transparent text-ink-2 hover:bg-paper/60 hover:text-ink'
             }`}
           >
             {item.icon && <span className="max-xs:hidden inline-flex shrink-0">{item.icon}</span>}

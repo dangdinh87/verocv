@@ -11,7 +11,15 @@ import type { CvRecord } from '@/lib/cv-repository'
 import { newId, saveCv } from '@/lib/cv-repository'
 import { KANBAN_COLUMNS } from '@/lib/kanban'
 import type { JdTailorOutput } from '@/server/ai/local-fallback'
-import { DEFAULT_CV_SETTINGS, getPersonaData, type InterviewPrepQuestion, type JobApplication, type JobTodo, type KanbanColumnId, type LetterDocument } from '@/types/resume'
+import {
+  DEFAULT_CV_SETTINGS,
+  getPersonaData,
+  type InterviewPrepQuestion,
+  type JobApplication,
+  type JobTodo,
+  type KanbanColumnId,
+  type LetterDocument,
+} from '@/types/resume'
 import { migrateToV2 } from '@/types/schema'
 
 type Props = {
@@ -279,7 +287,13 @@ function ApplicationForm({ application, initialDraft, defaultColumn, cvs, letter
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                 />
-                <Button type="button" variant="secondary" disabled={clipping} onClick={() => void clipFromUrl()} className="mb-0.5 shrink-0 gap-1.5">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  disabled={clipping}
+                  onClick={() => void clipFromUrl()}
+                  className="mb-0.5 shrink-0 gap-1.5"
+                >
                   <DownloadSimple size={15} weight="bold" aria-hidden="true" />
                   {clipping ? 'Đang hút JD…' : 'Hút thông tin'}
                 </Button>
@@ -297,7 +311,13 @@ function ApplicationForm({ application, initialDraft, defaultColumn, cvs, letter
                   </option>
                 ))}
               </SelectField>
-              <TextField label="Mức lương" placeholder="18 - 25 triệu" optional value={salary} onChange={(e) => setSalary(e.target.value)} />
+              <TextField
+                label="Mức lương"
+                placeholder="18 - 25 triệu"
+                optional
+                value={salary}
+                onChange={(e) => setSalary(e.target.value)}
+              />
               <TextField label="Địa điểm" optional value={location} onChange={(e) => setLocation(e.target.value)} />
               <TextField label="Ngày nộp" type="date" optional value={appliedDate} onChange={(e) => setAppliedDate(e.target.value)} />
               <TextField
@@ -341,9 +361,7 @@ function ApplicationForm({ application, initialDraft, defaultColumn, cvs, letter
               />
 
               <div className="flex flex-wrap items-center justify-between gap-2 rounded-control border border-pen/30 bg-pen-wash/40 px-3.5 py-2.5">
-                <p className="text-xs text-ink-2">
-                  Tạo bản sao CV được AI viết lại Summary &amp; thành tích khớp trực tiếp với JD này.
-                </p>
+                <p className="text-xs text-ink-2">Tạo bản sao CV được AI viết lại Summary &amp; thành tích khớp trực tiếp với JD này.</p>
                 <div className="flex flex-wrap gap-2">
                   <Button
                     type="button"
@@ -376,7 +394,11 @@ function ApplicationForm({ application, initialDraft, defaultColumn, cvs, letter
                       onClick={() => setTodos(todos.map((t) => (t.id === todo.id ? { ...t, done: !t.done } : t)))}
                       className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-control hover:bg-ink/[0.06]"
                     >
-                      {todo.done ? <CheckSquare size={20} weight="fill" className="text-pen" /> : <Square size={20} className="text-ink-3" />}
+                      {todo.done ? (
+                        <CheckSquare size={20} weight="fill" className="text-pen" />
+                      ) : (
+                        <Square size={20} className="text-ink-3" />
+                      )}
                     </button>
                     <input
                       aria-label="Nội dung việc cần làm"
@@ -477,13 +499,9 @@ function ApplicationForm({ application, initialDraft, defaultColumn, cvs, letter
           confirmDelete ? (
             <span className="flex items-center gap-2">
               <span className="text-ink-2">Xoá hẳn vị trí này?</span>
-              <button
-                type="button"
-                onClick={() => onDelete(application.id)}
-                className="h-10 cursor-pointer rounded-control bg-seal px-4 font-semibold text-white hover:opacity-90"
-              >
+              <Button variant="danger" size="sm" onClick={() => onDelete(application.id)}>
                 Xoá
-              </button>
+              </Button>
               <Button type="button" variant="ghost" size="sm" onClick={() => setConfirmDelete(false)}>
                 Giữ lại
               </Button>

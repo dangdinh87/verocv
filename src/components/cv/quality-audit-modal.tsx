@@ -299,7 +299,7 @@ export function QualityAuditModal({
                     <span className="font-bold tabular-nums text-pen">{jdResult.matchPercent}%</span>
                   </div>
                   <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-rule">
-                    <div className="h-full bg-pen transition-all" style={{ width: `${jdResult.matchPercent}%` }} />
+                    <div className="h-full bg-pen transition-[width]" style={{ width: `${jdResult.matchPercent}%` }} />
                   </div>
                 </div>
 

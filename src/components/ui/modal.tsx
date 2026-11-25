@@ -53,7 +53,7 @@ function ModalDialog({ onClose, title, description, size = 'md', children }: Omi
       onClick={(e) => {
         if (e.target === ref.current) onClose()
       }}
-      className={`m-auto max-h-[88dvh] w-[calc(100%-2rem)] ${SIZES[size]} overflow-hidden rounded-sheet border border-rule bg-paper p-0 text-ink backdrop:bg-ink/40`}
+      className={`sheet-dialog m-auto max-h-[88dvh] w-[calc(100%-2rem)] ${SIZES[size]} overflow-hidden rounded-sheet border border-rule bg-paper p-0 text-ink`}
     >
       <div className="flex max-h-[88dvh] flex-col">
         <div className="flex items-start justify-between gap-4 border-b border-rule px-6 py-4">

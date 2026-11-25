@@ -37,14 +37,7 @@ export function ScoreRing({
       aria-label={`Điểm ${label ?? 'ATS'}: ${clamped} trên 100`}
     >
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="-rotate-90">
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke="var(--color-rule)"
-          strokeWidth={strokeWidth}
-        />
+        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="var(--color-rule)" strokeWidth={strokeWidth} />
         <circle
           cx={size / 2}
           cy={size / 2}

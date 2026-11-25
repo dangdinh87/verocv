@@ -230,7 +230,7 @@ export function LiveCustomizerSection() {
                 A4 Chuẩn ATS · {fontFamily === 'sans' ? 'Be Vietnam Pro' : 'Source Serif 4'}
               </span>
             </div>
-            <div className="mx-auto max-w-[33rem] overflow-hidden rounded-[6px] border border-rule bg-white transition-all duration-200">
+            <div className="mx-auto max-w-[33rem] overflow-hidden rounded-[6px] border border-rule bg-white">
               <ResumePaper
                 layout={layout}
                 data={previewData}

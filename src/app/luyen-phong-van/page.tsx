@@ -60,7 +60,7 @@ export default function MockInterviewPage() {
         </Suspense>
       </div>
 
-      <details className="mt-8 rounded-sheet border border-rule bg-paper px-5 py-3.5 text-sm">
+      <details className="smooth-details mt-8 rounded-sheet border border-rule bg-paper px-5 py-3.5 text-sm">
         <summary className="cursor-pointer font-semibold text-ink">
           Công thức trả lời STAR ghi điểm cao với nhà tuyển dụng
         </summary>

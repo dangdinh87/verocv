@@ -3,7 +3,7 @@
 import { useId, type ComponentPropsWithoutRef, type ReactNode } from 'react'
 
 const CONTROL =
-  'mt-1.5 w-full rounded-control border border-rule bg-paper px-3 text-base text-ink placeholder:text-ink-3/80 hover:border-ink/30 focus-visible:border-pen focus-visible:outline-2 focus-visible:outline-pen/30 focus-visible:outline-offset-0 disabled:opacity-60'
+  'mt-1.5 w-full rounded-control border border-rule bg-paper px-3 text-base text-ink placeholder:text-ink-3/80 transition-[border-color] hover:border-ink/30 focus-visible:border-pen focus-visible:outline-2 focus-visible:outline-pen/30 focus-visible:outline-offset-0 aria-invalid:border-seal aria-invalid:focus-visible:outline-seal/30 disabled:opacity-60'
 
 type FieldChrome = { label: string; hint?: ReactNode; className?: string; optional?: boolean }
 

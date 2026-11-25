@@ -13,12 +13,12 @@ const LAYOUT_LABEL: Record<LetterTemplate['layout'], string> = {
 export function LetterTemplateCard({ t, className = '' }: { t: LetterTemplate; className?: string }) {
   return (
     <Link href={`/mau-thu-xin-viec/${t.slug}`} className={`group block ${className}`}>
-      <Card className="p-3 transition-[transform,border-color] duration-200 group-hover:-translate-y-1 group-hover:border-pen/60">
+      <Card className="p-3 transition-[transform,border-color] group-hover:-translate-y-0.5 group-hover:border-pen/60">
         <div className="relative rounded-[8px] border border-rule bg-desk p-3">
           <div className="overflow-hidden rounded-[6px] border border-rule bg-white">
             <LetterPaper layout={t.layout} accent={t.accent} label={`Mẫu thư xin việc ${t.name}`} />
           </div>
-          <div className="pointer-events-none absolute inset-x-3 bottom-3 flex items-center justify-center rounded-b-[6px] bg-gradient-to-t from-ink/75 via-ink/35 to-transparent px-3 pb-3 pt-8 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          <div className="pointer-events-none absolute inset-x-3 bottom-3 flex items-center justify-center rounded-b-[6px] pb-3 opacity-0 transition-opacity group-hover:opacity-100">
             <span className="inline-flex h-8 items-center rounded-full bg-paper px-3.5 text-xs font-semibold text-ink">
               Xem &amp; dùng mẫu →
             </span>

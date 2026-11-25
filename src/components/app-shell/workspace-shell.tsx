@@ -166,7 +166,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
               <span className="text-xs font-bold tabular-nums text-pen">{quotaText}</span>
             </div>
             <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-rule">
-              <div className="h-full rounded-full bg-pen transition-all" style={{ width: `${quotaRatio}%` }} />
+              <div className="h-full rounded-full bg-pen transition-[width]" style={{ width: `${quotaRatio}%` }} />
             </div>
             <div className="mt-2 flex items-center justify-between gap-2">
               <span className="inline-flex items-center gap-1 rounded-full border border-rule bg-paper px-2 py-0.5 text-[11px] font-bold text-ink-2">

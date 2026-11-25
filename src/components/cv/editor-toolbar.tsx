@@ -12,13 +12,10 @@ import {
   Printer,
   Question,
   ShareNetwork,
-  Sparkle,
 } from '@phosphor-icons/react/dist/ssr'
-import { useMemo } from 'react'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { auditCvQuality } from '@/lib/cv-auditor'
-import { evaluateCvReview } from '@/lib/cv-reviewer'
 import { buildResumeDocx, triggerDocxDownload } from '@/lib/docx-export'
 import { fileSafeName, printDocument } from '@/lib/print-document'
 import { useEditorStore } from '@/store/editor-store'
@@ -26,29 +23,20 @@ import { useEditorStore } from '@/store/editor-store'
 const ICON_BUTTON =
   'flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-control text-ink-2 hover:bg-ink/[0.06] hover:text-ink disabled:pointer-events-none disabled:opacity-35'
 
-function scorePillClass(score: number): string {
-  if (score >= 85) return 'border-mint/35 bg-mint-wash text-mint hover:border-mint'
-  if (score >= 65) return 'border-pen/35 bg-pen-wash text-pen hover:border-pen'
-  return 'border-seal/35 bg-seal/10 text-seal hover:border-seal'
-}
-
 export function EditorToolbar({
   onOpenPalette,
   onOpenShortcuts,
   onOpenAudit,
-  onOpenReview,
   onOpenShare,
   onOpenVersions,
 }: {
   onOpenPalette: () => void
   onOpenShortcuts: () => void
   onOpenAudit: () => void
-  onOpenReview?: () => void
   onOpenShare?: () => void
   onOpenVersions?: () => void
 }) {
   const doc = useEditorStore((s) => s.doc)
-  const setActiveTab = useEditorStore((s) => s.setActiveTab)
   const undo = useEditorStore((s) => s.undo)
   const redo = useEditorStore((s) => s.redo)
   const canUndo = useEditorStore((s) => s.undoStack.length > 0)
@@ -58,38 +46,15 @@ export function EditorToolbar({
   const pageCount = useEditorStore((s) => s.pageCount)
   const issueCount = doc ? auditCvQuality(doc.data, doc.settings.documentLanguage ?? 'vi', doc.settings.hiddenSections).length : 0
 
-  const reviewScore = useMemo(
-    () => (doc ? evaluateCvReview(doc.data, doc.settings.documentLanguage ?? 'vi', doc.settings.hiddenSections).overallScore : null),
-    [doc],
-  )
-
   const downloadDocx = () => {
     if (!doc) return
     const bytes = buildResumeDocx(doc)
     triggerDocxDownload(bytes, `CV-${fileSafeName(doc.data.name || doc.title)}.docx`)
   }
 
-  const handleOpenReview = () => {
-    if (onOpenReview) onOpenReview()
-    else setActiveTab('audit')
-  }
-
   return (
     <div className="flex shrink-0 items-center gap-1">
-      {reviewScore !== null && (
-        <button
-          type="button"
-          onClick={handleOpenReview}
-          aria-label={`Mở AI Review, điểm hiện tại ${reviewScore}/100`}
-          title="Mở AI Review từng dòng"
-          className={`hidden h-9 shrink-0 cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 text-xs font-bold tabular-nums transition-colors sm:inline-flex ${scorePillClass(reviewScore)}`}
-        >
-          <Sparkle size={14} weight="fill" className="shrink-0" aria-hidden="true" />
-          <span className="hidden xl:inline">AI Score:</span>
-          <span>{reviewScore}/100</span>
-        </button>
-      )}
-
+      {/* Điểm AI đã hiện ở badge của tab "AI Review" bên dưới — không lặp lại ở đây. */}
       <button type="button" onClick={undo} disabled={!canUndo} aria-label="Hoàn tác" title="Hoàn tác (Ctrl+Z)" className={ICON_BUTTON}>
         <ArrowCounterClockwise size={18} />
       </button>
@@ -156,6 +121,8 @@ export function EditorToolbar({
           </span>
         )}
       </button>
+
+      <span className="mx-1 hidden h-5 w-px shrink-0 bg-rule md:block" aria-hidden="true" />
 
       {onOpenShare && (
         <div className="flex shrink-0">
