@@ -1,0 +1,413 @@
+@import 'tailwindcss';
+
+/*
+  VeroCV Signature Design System — "Emerald & Warm Alabaster"
+  Flat 1px warm rule surfaces, deep forest slate ink, emerald primary accent, mint AI & live analytics accent.
+  Supports Light & Dark themes via CSS custom properties + [data-theme='dark'].
+*/
+@theme inline {
+  --font-sans: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta-sans), var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
+  --font-hand: var(--font-patrick-hand), 'Segoe Print', cursive;
+  --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-jakarta: var(--font-jakarta-sans), var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
+  --font-lora: var(--font-lora-serif), Georgia, serif;
+}
+
+@theme {
+  --color-ink: #111917;
+  --color-ink-2: #374440;
+  --color-ink-3: #64736e;
+  --color-pen: #0c6a58;
+  --color-pen-dark: #085042;
+  --color-pen-wash: #e4f3ef;
+  --color-mint: #0e8a6d;
+  --color-mint-wash: #daf5ed;
+  --color-seal: #dc2626;
+  --color-kraft: #f3ece0;
+  --color-kraft-deep: #dfd1b8;
+  --color-desk: #f6f5f0;
+  --color-paper: #ffffff;
+  --color-rule: #e2e0d8;
+
+  --radius-sheet: 12px;
+  --radius-control: 8px;
+
+  --breakpoint-xs: 30rem;
+}
+
+[data-theme='dark'] {
+  --color-desk: #0a100f;
+  --color-paper: #121b19;
+  --color-ink: #f3f7f5;
+  --color-ink-2: #c5d1cd;
+  --color-ink-3: #899b95;
+  --color-rule: #1e2d29;
+  --color-pen: #11826c;
+  --color-pen-dark: #0d6b58;
+  --color-pen-wash: #112b26;
+  --color-mint: #34d399;
+  --color-mint-wash: #0a2922;
+  --color-seal: #fb7185;
+  --color-kraft: #1c2420;
+  --color-kraft-deep: #2b3831;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-desk);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    line-height: 1.16;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-pen);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--color-pen-wash);
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 74rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  }
+  .workspace-wrap {
+    width: 100%;
+    max-width: 86rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 2.2vw, 1.75rem);
+  }
+
+  /* A form row: label column on the left, answer on the right. Used for every long section. */
+  .form-section {
+    display: grid;
+    gap: 1.5rem 3rem;
+    border-top: 1px solid var(--color-rule);
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+  }
+  @media (min-width: 64rem) {
+    .form-section {
+      grid-template-columns: minmax(0, 17rem) minmax(0, 1fr);
+    }
+    .form-section > .form-label {
+      position: sticky;
+      top: 6rem;
+      align-self: start;
+    }
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.16;
+  }
+
+  .field-line {
+    border-bottom: 1.5px solid var(--color-rule);
+    padding-bottom: 0.35rem;
+  }
+
+  /* 21st.dev signature surface elevation (pure CSS, zero Tailwind shadow-* utilities). */
+  .elevated-card {
+    box-shadow:
+      0 1px 2px rgba(17, 25, 23, 0.04),
+      0 14px 36px -14px rgba(12, 106, 88, 0.11);
+  }
+  [data-theme='dark'] .elevated-card {
+    box-shadow:
+      0 0 0 1px rgba(243, 247, 245, 0.04),
+      0 20px 44px -16px rgba(0, 0, 0, 0.65);
+  }
+
+  /* Subtle dot/grid backdrop for Hero */
+  .hero-grid-bg {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--color-rule) 60%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-rule) 60%, transparent) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, #000 35%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, #000 35%, transparent 100%);
+  }
+
+  /* Spotlight card tracking pointer coordinates (--mx, --my) */
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+    transition:
+      border-color 200ms ease,
+      transform 200ms ease;
+  }
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 240ms ease;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, var(--color-pen) 11%, transparent),
+      transparent 65%
+    );
+  }
+  [data-theme='dark'] .spotlight-card::before {
+    background: radial-gradient(
+      440px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, var(--color-mint) 14%, transparent),
+      color-mix(in oklab, var(--color-pen) 8%, transparent) 42%,
+      transparent 68%
+    );
+  }
+  .spotlight-card[data-hovered='true']::before,
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+
+  /* BorderBeam animated conic-gradient frame */
+  .border-beam-frame {
+    position: relative;
+    border-radius: var(--radius-sheet);
+  }
+  .border-beam-overlay {
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1.5px;
+    pointer-events: none;
+    z-index: 20;
+    background: conic-gradient(
+      from var(--beam-angle, 0deg),
+      transparent 0deg 250deg,
+      color-mix(in oklab, var(--color-pen) 88%, transparent) 295deg,
+      color-mix(in oklab, var(--color-mint) 92%, transparent) 332deg,
+      transparent 360deg
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: border-beam-spin var(--beam-duration, 9s) linear infinite;
+  }
+
+  /* Footer stays deep forest slate across both light and dark modes */
+  .site-footer {
+    background: #111917;
+    color: rgba(243, 247, 245, 0.82);
+  }
+  [data-theme='dark'] .site-footer {
+    background: #070d0c;
+    border-top: 1px solid var(--color-rule);
+  }
+
+  /* Theme toggle instant CSS-driven icon swap (zero SSR hydration mismatch) */
+  .theme-toggle-sun {
+    display: none;
+  }
+  .theme-toggle-moon {
+    display: inline-flex;
+  }
+  [data-theme='dark'] .theme-toggle-sun {
+    display: inline-flex;
+  }
+  [data-theme='dark'] .theme-toggle-moon {
+    display: none;
+  }
+
+  /* Horizontal marquee edge fade + Hero A4 bottom paper fade */
+  .marquee-fade-mask {
+    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  }
+  .hero-paper-fade {
+    background: linear-gradient(
+      to top,
+      var(--color-desk) 8%,
+      color-mix(in oklab, var(--color-desk) 72%, transparent) 45%,
+      transparent 100%
+    );
+  }
+
+  /* Keep CV & Letter sheets crisp white paper even in dark mode */
+  .cv,
+  .letter {
+    background: #ffffff;
+    color: #00060c;
+    color-scheme: light;
+  }
+  [data-theme='dark'] .cv-frame {
+    box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.65);
+  }
+}
+
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-beam-spin {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+/* Horizontal template strip marquee (pauses on hover) */
+@keyframes verocv-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: verocv-marquee 42s linear infinite;
+}
+.marquee-group:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Hero: the label on the folder is "written", then the CV rises out of it. */
+@keyframes write {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes rise {
+  from {
+    transform: translateY(16%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes stamp {
+  0% {
+    opacity: 0;
+    transform: rotate(-14deg) scale(1.5);
+  }
+  60% {
+    opacity: 1;
+    transform: rotate(-14deg) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-14deg) scale(1);
+  }
+}
+.hero-write {
+  animation: write 1s steps(24, end) both;
+  animation-delay: var(--d, 0s);
+}
+.hero-rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 1.5s both;
+}
+.hero-stamp {
+  animation: stamp 0.45s cubic-bezier(0.3, 0.9, 0.3, 1) 2.5s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-write,
+  .hero-rise,
+  .hero-stamp,
+  .border-beam-overlay,
+  .marquee-track {
+    animation: none;
+  }
+  .border-beam-overlay {
+    --beam-angle: 315deg;
+  }
+}
+
+/* Print: only the sheet. Anything marked .no-print disappears, and wrappers marked .print-reset
+   shed their layout (grid, sticky, scroll areas) so the sheet flows across pages like a normal document. */
+@media print {
+  :root,
+  [data-theme='dark'] {
+    --color-desk: #ffffff;
+    --color-paper: #ffffff;
+    --color-ink: #111917;
+    --color-ink-2: #374440;
+    --color-ink-3: #64736e;
+    --color-rule: #e2e0d8;
+    color-scheme: light;
+  }
+  html {
+    background: #fff !important;
+    color: #111917 !important;
+  }
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    background: transparent !important;
+    color: #111917 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-reset {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    transform: none !important;
+    gap: 0 !important;
+  }
+}
