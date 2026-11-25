@@ -16,7 +16,7 @@ import {
 } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useAuth } from '@/components/auth/auth-provider'
 import { ROLE_STARTER_KITS, type RoleStarterKit } from '@/components/resume/resume-data'
 import { ResumePaper } from '@/components/resume/resume-paper'
@@ -32,6 +32,7 @@ import { buildResumeDocx, triggerDocxDownload } from '@/lib/docx-export'
 import { fileSafeName } from '@/lib/print-document'
 import { WorkspaceBackupControls } from '@/components/workspace-backup-controls'
 import { CareerReadinessChecklist } from '@/components/app-shell/career-readiness-checklist'
+import { OpenOnNewParam } from '@/components/app-shell/open-on-new-param'
 import { NumberTicker } from '@/components/ui/number-ticker'
 import { migrateToV2 } from '@/types/schema'
 import { CvImportDialog } from './cv-import-dialog'
@@ -61,7 +62,6 @@ export function CvDashboard() {
   const [creatingId, setCreatingId] = useState<string | null>(null)
   const [notice, setNotice] = useState<string | null>(null)
   const [renameText, setRenameText] = useState('')
-  const handledNewParam = useRef(false)
 
   const reload = useCallback(async () => setCvs(await listCvs()), [])
 
@@ -77,18 +77,6 @@ export function CvDashboard() {
     setDialog(null)
     return true
   }, [atFreeLimit])
-
-  useEffect(() => {
-    if (cvs === null || handledNewParam.current || typeof window === 'undefined') return
-    const params = new URLSearchParams(window.location.search)
-    if (params.get('new') === '1') {
-      handledNewParam.current = true
-      if (!blockedByLimit()) {
-        setCreateTab('templates')
-        setDialog({ type: 'create' })
-      }
-    }
-  }, [cvs, blockedByLimit])
 
   const scoresById = useMemo(() => {
     const map = new Map<string, number>()
@@ -179,6 +167,14 @@ export function CvDashboard() {
 
   return (
     <div className="workspace-wrap pb-10 pt-6 lg:pt-8">
+      <OpenOnNewParam
+        ready={cvs !== null}
+        onNew={() => {
+          if (blockedByLimit()) return
+          setCreateTab('templates')
+          setDialog({ type: 'create' })
+        }}
+      />
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="flex flex-wrap items-center gap-2.5">

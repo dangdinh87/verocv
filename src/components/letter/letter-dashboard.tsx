@@ -3,7 +3,7 @@
 import { ArrowRight, CloudCheck, Copy, EnvelopeSimple, FileDoc, PencilSimple, Plus, Trash } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useAuth } from '@/components/auth/auth-provider'
 import { LetterPaper } from '@/components/resume/letter-paper'
 import { Button } from '@/components/ui/button'
@@ -25,6 +25,7 @@ import {
   subscribeToStorageKey,
 } from '@/lib/storage'
 import { WorkspaceBackupControls } from '@/components/workspace-backup-controls'
+import { OpenOnNewParam } from '@/components/app-shell/open-on-new-param'
 import type { LetterDocument } from '@/types/resume'
 
 type Dialog = { type: 'create' } | { type: 'rename'; letter: LetterDocument } | { type: 'delete'; letter: LetterDocument } | null
@@ -38,7 +39,6 @@ export function LetterDashboard() {
   const [notice, setNotice] = useState<string | null>(null)
   const [sourceCvId, setSourceCvId] = useState('')
   const [renameText, setRenameText] = useState('')
-  const handledNewParam = useRef(false)
 
   const reload = useCallback(() => setLetters(getLetterList()), [])
 
@@ -66,15 +66,6 @@ export function LetterDashboard() {
     return true
   }, [atFreeLimit])
 
-  useEffect(() => {
-    if (letters === null || handledNewParam.current || typeof window === 'undefined') return
-    const params = new URLSearchParams(window.location.search)
-    if (params.get('new') === '1') {
-      handledNewParam.current = true
-      if (!blockedByLimit()) setDialog({ type: 'create' })
-    }
-  }, [letters, blockedByLimit])
-
   const create = (slug: string) => {
     if (blockedByLimit()) return
     const doc = createLetterFromTemplate(
@@ -100,6 +91,12 @@ export function LetterDashboard() {
 
   return (
     <div className="workspace-wrap pb-10 pt-6 lg:pt-8">
+      <OpenOnNewParam
+        ready={letters !== null}
+        onNew={() => {
+          if (!blockedByLimit()) setDialog({ type: 'create' })
+        }}
+      />
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <div className="flex flex-wrap items-center gap-2.5">
