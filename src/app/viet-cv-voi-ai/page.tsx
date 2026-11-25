@@ -1,10 +1,9 @@
 import { Sparkle } from '@phosphor-icons/react/dist/ssr'
 import type { Metadata } from 'next'
 import { BeforeAfterCard } from '@/components/ui/before-after-card'
-import { BorderBeam } from '@/components/ui/border-beam'
 import { Button } from '@/components/ui/button'
 import { FormSection } from '@/components/ui/form-section'
-import { SpotlightCard } from '@/components/ui/spotlight-card'
+import { Card } from '@/components/ui/card'
 
 export const metadata: Metadata = {
   title: 'AI Career Copilot — Tối ưu CV theo JD & Luyện phỏng vấn',
@@ -49,7 +48,6 @@ export default function AiWriterPage() {
   return (
     <>
       <div className="relative overflow-hidden">
-        <div className="hero-grid-bg pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
         <section className="wrap grid items-start gap-10 pb-14 pt-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,32rem)] lg:gap-12 lg:pb-20 lg:pt-11">
           <div className="min-w-0 lg:pt-1.5">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-rule bg-paper px-3 py-1 text-xs font-bold text-pen">
@@ -61,7 +59,8 @@ export default function AiWriterPage() {
               <span className="block text-pen">Để AI gợi ý, bạn quyết định</span>
             </h1>
             <p className="mt-4 max-w-[46ch] text-[1.05rem] leading-relaxed text-ink-2">
-              Chấm điểm từng dòng, đối chiếu JD ngữ nghĩa, viết lại thành tích chuẩn ATS, dịch song ngữ Việt–Anh và luyện phỏng vấn STAR. Mọi chỉnh sửa chỉ áp dụng khi bạn bấm chọn.
+              Chấm điểm từng dòng, đối chiếu JD ngữ nghĩa, viết lại thành tích chuẩn ATS, dịch song ngữ Việt–Anh và luyện phỏng vấn STAR.
+              Mọi chỉnh sửa chỉ áp dụng khi bạn bấm chọn.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Button href="/cv" size="lg">
@@ -74,16 +73,14 @@ export default function AiWriterPage() {
           </div>
 
           <div className="min-w-0">
-            <BorderBeam durationSec={9}>
-              <BeforeAfterCard />
-            </BorderBeam>
+            <BeforeAfterCard />
           </div>
         </section>
       </div>
 
       <FormSection title="AI Copilot làm được gì cho bạn" hint="Vận hành trên Cloudflare Workers AI, luôn giữ nguyên dữ kiện thật của bạn.">
         <div className="space-y-6">
-          <div className="elevated-card overflow-hidden rounded-sheet border border-rule bg-paper">
+          <div className="overflow-hidden rounded-sheet border border-rule bg-paper">
             <img
               src="/images/brand/ai-copilot-craft.jpg"
               alt="Minh hoạ không gian làm việc cùng VeroCV AI Copilot"
@@ -93,13 +90,13 @@ export default function AiWriterPage() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             {FEATURES.map(([term, desc, ready]) => (
-              <SpotlightCard key={term} className="p-5">
+              <Card key={term} className="p-5">
                 <h3 className="text-base font-bold text-ink">
                   {term}
                   {!ready && <span className="ml-2 rounded-full bg-kraft px-2.5 py-0.5 text-xs font-semibold text-ink">Sắp có</span>}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-2">{desc}</p>
-              </SpotlightCard>
+              </Card>
             ))}
           </div>
         </div>

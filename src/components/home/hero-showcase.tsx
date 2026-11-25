@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { QUOC_HUY } from '@/components/resume/resume-data'
 import { ResumePaper } from '@/components/resume/resume-paper'
 import { AnimatedTabs, type AnimatedTabItem } from '@/components/ui/animated-tabs'
-import { BorderBeam } from '@/components/ui/border-beam'
 import { ScoreRing } from '@/components/ui/score-ring'
 
 type HeroTab = 'ai-review' | 'jd-match' | 'live-link'
@@ -42,7 +41,7 @@ export function HeroShowcase() {
   const [fixedLine, setFixedLine] = useState(false)
 
   return (
-    <BorderBeam className="elevated-card mx-auto w-full max-w-[35rem]" durationSec={10}>
+    <div className="mx-auto w-full max-w-[35rem]">
       <div
         id="hero-showcase"
         role="region"
@@ -68,7 +67,13 @@ export function HeroShowcase() {
 
         {/* Interactive Feature Tabs */}
         <div className="border-b border-rule bg-paper px-3.5 py-2.5">
-          <AnimatedTabs items={HERO_TABS} value={tab} onChange={setTab} ariaLabel="Tính năng VeroCV Studio" className="w-full justify-between sm:w-auto" />
+          <AnimatedTabs
+            items={HERO_TABS}
+            value={tab}
+            onChange={setTab}
+            ariaLabel="Tính năng VeroCV Studio"
+            className="w-full justify-between sm:w-auto"
+          />
         </div>
 
         {/* Interactive Telemetry Panel (Zero Overlaps) */}
@@ -77,9 +82,7 @@ export function HeroShowcase() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="min-w-0 flex-1 space-y-2">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full bg-pen-wash px-2 py-0.5 text-[0.68rem] font-bold text-pen">
-                    Kinh nghiệm #1 · Dòng 1
-                  </span>
+                  <span className="rounded-full bg-pen-wash px-2 py-0.5 text-[0.68rem] font-bold text-pen">Kinh nghiệm #1 · Dòng 1</span>
                   <span className="text-[0.72rem] font-semibold text-ink-3">
                     {fixedLine ? 'Đã áp dụng vào bản nháp' : 'Phát hiện thiếu số liệu (+12 điểm)'}
                   </span>
@@ -193,13 +196,13 @@ export function HeroShowcase() {
           <div className="pointer-events-none absolute inset-x-0 bottom-3 z-10 flex justify-center px-3">
             <Link
               href="/cv"
-              className="elevated-card pointer-events-auto inline-flex items-center gap-1.5 rounded-full border border-rule bg-paper/95 px-3.5 py-1.5 text-xs font-semibold text-ink backdrop-blur-sm transition-colors hover:border-pen hover:text-pen"
+              className="pointer-events-auto inline-flex items-center gap-1.5 rounded-full border border-rule bg-paper/95 px-3.5 py-1.5 text-xs font-semibold text-ink backdrop-blur-sm transition-colors hover:border-pen hover:text-pen"
             >
               Mở trọn khổ A4 trong CV Studio →
             </Link>
           </div>
         </div>
       </div>
-    </BorderBeam>
+    </div>
   )
 }

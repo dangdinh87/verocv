@@ -19,7 +19,6 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useAuth } from '@/components/auth/auth-provider'
 import { Button } from '@/components/ui/button'
-import { NumberTicker } from '@/components/ui/number-ticker'
 import { formatVnd } from '@/config/brand'
 import { listCvs, subscribeToCvChanges } from '@/lib/cv-repository'
 import { APPLICATION_KEY, getApplications, getLetterList, LETTER_KEY, subscribeToStorageKey } from '@/lib/storage'
@@ -121,7 +120,8 @@ export default function AccountPage() {
                 Tài khoản, Link CV Online &amp; Thống kê nhà tuyển dụng
               </h1>
               <p className="text-sm leading-relaxed text-ink-2">
-                Dữ liệu của bạn hiện đang được lưu an toàn trên trình duyệt này. Đăng nhập miễn phí để đồng bộ xuyên thiết bị lên Cloudflare D1, xuất bản Link CV trực tuyến kèm QR và theo dõi lượt nhà tuyển dụng tải hồ sơ.
+                Dữ liệu của bạn hiện đang được lưu an toàn trên trình duyệt này. Đăng nhập miễn phí để đồng bộ xuyên thiết bị lên Cloudflare
+                D1, xuất bản Link CV trực tuyến kèm QR và theo dõi lượt nhà tuyển dụng tải hồ sơ.
               </p>
             </div>
             <div className="flex flex-wrap gap-2.5">
@@ -147,7 +147,7 @@ export default function AccountPage() {
                 <FileText size={18} className="text-pen" aria-hidden="true" />
               </div>
               <p className="mt-2 font-display text-2xl font-extrabold tabular-nums text-ink">
-                <NumberTicker value={localStats.cvCount} />
+                <span className="tabular-nums">{localStats.cvCount}</span>
               </p>
               <Link href="/cv" className="mt-1 inline-block text-xs font-semibold text-pen hover:underline">
                 Quản lý trong CV Studio →
@@ -160,7 +160,7 @@ export default function AccountPage() {
                 <Receipt size={18} className="text-mint" aria-hidden="true" />
               </div>
               <p className="mt-2 font-display text-2xl font-extrabold tabular-nums text-ink">
-                <NumberTicker value={localStats.letterCount} />
+                <span className="tabular-nums">{localStats.letterCount}</span>
               </p>
               <Link href="/thu-xin-viec" className="mt-1 inline-block text-xs font-semibold text-pen hover:underline">
                 Xem danh sách thư →
@@ -173,7 +173,7 @@ export default function AccountPage() {
                 <Kanban size={18} className="text-pen" aria-hidden="true" />
               </div>
               <p className="mt-2 font-display text-2xl font-extrabold tabular-nums text-ink">
-                <NumberTicker value={localStats.appCount} />
+                <span className="tabular-nums">{localStats.appCount}</span>
               </p>
               <Link href="/theo-doi-ung-tuyen" className="mt-1 inline-block text-xs font-semibold text-pen hover:underline">
                 Mở bảng ứng tuyển →
@@ -296,7 +296,7 @@ export default function AccountPage() {
             Hạn mức AI Copilot hôm nay
           </p>
           <p className="mt-2 text-2xl font-extrabold tabular-nums text-ink">
-            <NumberTicker value={aiUsed} /> / {aiLimit} lượt
+            <span className="tabular-nums">{aiUsed}</span> / {aiLimit} lượt
           </p>
           <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-rule">
             <div className="h-full bg-pen" style={{ width: `${aiPercent}%` }} />
@@ -313,7 +313,9 @@ export default function AccountPage() {
             AI Engine: <span className="text-mint">{infra?.aiMode ?? 'local-engine'}</span>
           </p>
           <p className="mt-2 text-xs text-ink-3">
-            {lastSyncedAt ? `Đồng bộ gần nhất: ${new Date(lastSyncedAt).toLocaleTimeString('vi-VN')}` : 'Tự động đồng bộ khi mở trình duyệt'}
+            {lastSyncedAt
+              ? `Đồng bộ gần nhất: ${new Date(lastSyncedAt).toLocaleTimeString('vi-VN')}`
+              : 'Tự động đồng bộ khi mở trình duyệt'}
           </p>
         </section>
       </div>
@@ -366,7 +368,11 @@ export default function AccountPage() {
                         onClick={() => void handleCopyUrl(item.slug)}
                         className="inline-flex cursor-pointer items-center gap-1 rounded-control border border-rule bg-paper px-2.5 py-1 text-xs font-semibold text-ink hover:border-pen hover:text-pen"
                       >
-                        {isCopied ? <Check size={12} weight="bold" className="text-mint" aria-hidden="true" /> : <Copy size={12} aria-hidden="true" />}
+                        {isCopied ? (
+                          <Check size={12} weight="bold" className="text-mint" aria-hidden="true" />
+                        ) : (
+                          <Copy size={12} aria-hidden="true" />
+                        )}
                         {isCopied ? 'Đã chép!' : 'Sao chép URL'}
                       </button>
                     </div>

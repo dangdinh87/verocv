@@ -1,6 +1,6 @@
 import { CheckCircle, Minus, Sparkle, XCircle } from '@phosphor-icons/react/dist/ssr'
 import { Button } from '@/components/ui/button'
-import { SpotlightCard } from '@/components/ui/spotlight-card'
+import { Card } from '@/components/ui/card'
 
 type CellKind = 'yes' | 'partial' | 'no'
 
@@ -80,7 +80,8 @@ export function FlowCvCompareSection() {
               Độ tinh xảo ngang chuẩn quốc tế — nhưng thiết kế riêng cho thị trường Việt
             </h2>
             <p className="mt-2.5 text-base text-ink-2">
-              Giữ trọn trải nghiệm tuỳ biến A4 sắc nét của các công cụ hàng đầu, bổ sung AI Review từng dòng, xuất Word (.docx), Link CV kèm vCard và luyện phỏng vấn STAR.
+              Giữ trọn trải nghiệm tuỳ biến A4 sắc nét của các công cụ hàng đầu, bổ sung AI Review từng dòng, xuất Word (.docx), Link CV kèm
+              vCard và luyện phỏng vấn STAR.
             </p>
           </div>
           <Button href="/cv" size="md" className="shrink-0 self-start sm:self-auto">
@@ -89,7 +90,7 @@ export function FlowCvCompareSection() {
         </div>
 
         {/* Desktop & Tablet Comparison Table */}
-        <SpotlightCard className="elevated-card mt-10 hidden overflow-hidden md:block">
+        <Card className="mt-10 hidden overflow-hidden md:block">
           <table className="w-full text-left text-sm">
             <caption className="sr-only">So sánh VeroCV AI Studio với Word/Canva và công cụ CV quốc tế</caption>
             <thead>
@@ -139,12 +140,12 @@ export function FlowCvCompareSection() {
               ))}
             </tbody>
           </table>
-        </SpotlightCard>
+        </Card>
 
         {/* Mobile Cards (<md) */}
         <div className="mt-8 grid gap-3.5 md:hidden">
           {COMPARE_ROWS.map((row) => (
-            <SpotlightCard key={row.criteria} className="p-4">
+            <Card key={row.criteria} className="p-4">
               <h3 className="text-sm font-bold text-ink">{row.criteria}</h3>
               <div className="mt-3 space-y-2 text-xs">
                 <div className="flex items-center justify-between gap-2 rounded-control bg-pen-wash/40 px-3 py-2 font-semibold text-ink">
@@ -169,7 +170,7 @@ export function FlowCvCompareSection() {
                   </span>
                 </div>
               </div>
-            </SpotlightCard>
+            </Card>
           ))}
         </div>
       </div>

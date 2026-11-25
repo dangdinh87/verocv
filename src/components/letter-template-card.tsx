@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { LetterPaper } from '@/components/resume/letter-paper'
-import { SpotlightCard } from '@/components/ui/spotlight-card'
+import { Card } from '@/components/ui/card'
 import type { LetterTemplate } from '@/data/letter-templates'
 
 const LAYOUT_LABEL: Record<LetterTemplate['layout'], string> = {
@@ -13,7 +13,7 @@ const LAYOUT_LABEL: Record<LetterTemplate['layout'], string> = {
 export function LetterTemplateCard({ t, className = '' }: { t: LetterTemplate; className?: string }) {
   return (
     <Link href={`/mau-thu-xin-viec/${t.slug}`} className={`group block ${className}`}>
-      <SpotlightCard className="p-3 transition-[transform,border-color] duration-200 group-hover:-translate-y-1 group-hover:border-pen/60">
+      <Card className="p-3 transition-[transform,border-color] duration-200 group-hover:-translate-y-1 group-hover:border-pen/60">
         <div className="relative rounded-[8px] border border-rule bg-desk p-3">
           <div className="overflow-hidden rounded-[6px] border border-rule bg-white">
             <LetterPaper layout={t.layout} accent={t.accent} label={`Mẫu thư xin việc ${t.name}`} />
@@ -32,7 +32,7 @@ export function LetterTemplateCard({ t, className = '' }: { t: LetterTemplate; c
           </span>
         </div>
         <p className="mt-1.5 line-clamp-2 px-0.5 text-xs leading-relaxed text-ink-3">{t.blurb}</p>
-      </SpotlightCard>
+      </Card>
     </Link>
   )
 }

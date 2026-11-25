@@ -15,7 +15,7 @@ export default function AboutPage() {
       </span>
       <h1 className="display mt-4 text-[clamp(2.2rem,5vw,3.6rem)]">Vì sao có {BRAND.name}</h1>
 
-      <div className="elevated-card mt-8 overflow-hidden rounded-sheet border border-rule bg-paper">
+      <div className="mt-8 overflow-hidden rounded-sheet border border-rule bg-paper">
         <img
           src="/images/brand/hero-career-craft.jpg"
           alt="Không gian thiết kế hồ sơ nghề nghiệp tinh gọn của VeroCV Studio"
@@ -34,7 +34,7 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <section className="elevated-card mt-12 rounded-sheet border border-rule bg-paper p-6 sm:p-8">
+      <section className="mt-12 rounded-sheet border border-rule bg-paper p-6 sm:p-8">
         <h2 className="text-[1.5rem] font-bold">Chúng tôi tin vào ba điều</h2>
         <dl className="mt-5 border-b border-rule">
           {[

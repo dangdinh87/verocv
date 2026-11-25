@@ -1,5 +1,5 @@
 import { CheckCircle } from '@phosphor-icons/react/dist/ssr'
-import { SpotlightCard } from '@/components/ui/spotlight-card'
+import { Card } from '@/components/ui/card'
 import { CV_TEMPLATES } from '@/data/cv-templates'
 import { LETTER_TEMPLATES } from '@/data/letter-templates'
 
@@ -48,13 +48,13 @@ export function FreePlanSection() {
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {INCLUDED.map(([term, desc]) => (
-            <SpotlightCard key={term} className="p-5">
+            <Card key={term} className="p-5">
               <h3 className="flex items-start gap-2.5 text-base font-bold leading-snug text-ink">
                 <CheckCircle size={20} weight="fill" className="mt-0.5 shrink-0 text-mint" aria-hidden="true" />
                 <span>{term}</span>
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-2">{desc}</p>
-            </SpotlightCard>
+            </Card>
           ))}
         </div>
       </div>

@@ -36,7 +36,7 @@ export default async function CvTemplateDetailPage({ params }: Props) {
       </div>
 
       <section className="wrap grid items-start gap-10 pb-20 pt-8 lg:grid-cols-[minmax(0,31rem)_minmax(0,1fr)] lg:gap-16 lg:pt-10">
-        <div className="elevated-card rounded-sheet border border-rule bg-desk p-4 sm:p-6">
+        <div className="rounded-sheet border border-rule bg-desk p-4 sm:p-6">
           <div className="overflow-hidden rounded-[6px] border border-rule bg-white">
             <ResumePaper layout={t.layout} label={`Mẫu CV ${t.name}`} />
           </div>

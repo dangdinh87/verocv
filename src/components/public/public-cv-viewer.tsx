@@ -43,12 +43,7 @@ function buildVCardContent(doc: ResumeDocumentV2, publicUrl: string): string {
   const email = doc.data.email.trim()
   const phone = doc.data.phone.trim()
 
-  const lines = [
-    'BEGIN:VCARD',
-    'VERSION:3.0',
-    `FN:${escapeVCard(name)}`,
-    `N:${escapeVCard(name)};;;;`,
-  ]
+  const lines = ['BEGIN:VCARD', 'VERSION:3.0', `FN:${escapeVCard(name)}`, `N:${escapeVCard(name)};;;;`]
   if (role) lines.push(`TITLE:${escapeVCard(role)}`)
   if (email) lines.push(`EMAIL;TYPE=INTERNET:${email}`)
   if (phone) lines.push(`TEL;TYPE=CELL:${phone}`)
@@ -157,7 +152,7 @@ export function PublicCvViewer({ slug, refTag, initialDoc, initialProtected, not
   if (isProtected && !doc) {
     return (
       <div className="wrap max-w-md py-20">
-        <div className="elevated-card rounded-sheet border border-rule bg-paper p-7">
+        <div className="rounded-sheet border border-rule bg-paper p-7">
           <div className="flex items-center justify-between gap-2">
             <span className="inline-flex size-11 items-center justify-center rounded-full bg-pen-wash text-pen">
               <Lock size={22} weight="bold" aria-hidden="true" />
@@ -167,15 +162,12 @@ export function PublicCvViewer({ slug, refTag, initialDoc, initialProtected, not
           <h1 className="mt-4 text-xl font-bold text-ink">CV được bảo vệ bằng mã PIN</h1>
           <p className="mt-1.5 text-sm text-ink-2">Nhập mã PIN do ứng viên cung cấp để xem và tải hồ sơ này.</p>
           <form onSubmit={(e) => void unlock(e)} className="mt-5 space-y-4">
-            <TextField
-              label="Mã PIN"
-              type="password"
-              value={pin}
-              onChange={(e) => setPin(e.target.value)}
-              placeholder="••••"
-              autoFocus
-            />
-            {pinError && <p role="alert" className="text-sm text-seal">{pinError}</p>}
+            <TextField label="Mã PIN" type="password" value={pin} onChange={(e) => setPin(e.target.value)} placeholder="••••" autoFocus />
+            {pinError && (
+              <p role="alert" className="text-sm text-seal">
+                {pinError}
+              </p>
+            )}
             <Button type="submit" disabled={unlocking || !pin.trim()} className="w-full">
               {unlocking ? 'Đang mở khoá…' : 'Xem hồ sơ'}
             </Button>
@@ -212,7 +204,11 @@ export function PublicCvViewer({ slug, refTag, initialDoc, initialProtected, not
 
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {/* Zoom Controls */}
-            <div className="hidden items-center rounded-control border border-rule bg-desk p-0.5 sm:inline-flex" role="group" aria-label="Thu phóng trang CV">
+            <div
+              className="hidden items-center rounded-control border border-rule bg-desk p-0.5 sm:inline-flex"
+              role="group"
+              aria-label="Thu phóng trang CV"
+            >
               <button
                 type="button"
                 onClick={() => setZoom((z) => Math.max(80, z - 10))}
@@ -244,7 +240,11 @@ export function PublicCvViewer({ slug, refTag, initialDoc, initialProtected, not
             <ThemeToggle className="size-9" />
 
             <Button variant="secondary" size="sm" onClick={() => void handleCopyLink()} className="gap-1.5">
-              {copied ? <Check size={15} weight="bold" className="text-mint" aria-hidden="true" /> : <Copy size={15} weight="bold" aria-hidden="true" />}
+              {copied ? (
+                <Check size={15} weight="bold" className="text-mint" aria-hidden="true" />
+              ) : (
+                <Copy size={15} weight="bold" aria-hidden="true" />
+              )}
               <span>{copied ? 'Đã chép!' : 'Sao chép Link'}</span>
             </Button>
 

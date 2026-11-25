@@ -6,7 +6,7 @@ export type LegalSection = { title: string; body: ReactNode[] }
 export function LegalPage({ title, updated, sections }: { title: string; updated: string; sections: LegalSection[] }) {
   return (
     <article className="wrap max-w-[48rem] pb-24 pt-10 lg:pt-16">
-      <div className="elevated-card rounded-sheet border border-rule bg-paper p-6 sm:p-10">
+      <div className="rounded-sheet border border-rule bg-paper p-6 sm:p-10">
         <h1 className="display text-[clamp(2rem,4.6vw,3.1rem)] text-ink">{title}</h1>
         <p className="mt-3 text-sm text-ink-3">
           Cập nhật gần nhất: {updated} · Áp dụng cho nền tảng {BRAND.name}.

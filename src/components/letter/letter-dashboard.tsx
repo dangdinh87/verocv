@@ -9,7 +9,6 @@ import { LetterPaper } from '@/components/resume/letter-paper'
 import { Button } from '@/components/ui/button'
 import { SelectField, TextField } from '@/components/ui/field'
 import { Modal } from '@/components/ui/modal'
-import { NumberTicker } from '@/components/ui/number-ticker'
 import { BRAND } from '@/config/brand'
 import { LETTER_TEMPLATES } from '@/data/letter-templates'
 import { listCvs, subscribeToCvChanges, type CvRecord } from '@/lib/cv-repository'
@@ -121,7 +120,10 @@ export function LetterDashboard() {
             Thông tin người gửi tự lấy từ CV bạn chọn. Hỗ trợ AI soạn theo CV + JD và đồng bộ đa thiết bị khi đăng nhập.
           </p>
         </div>
-        <Button onClick={() => (blockedByLimit() ? undefined : setDialog({ type: 'create' }))} className="shrink-0 gap-2 self-start sm:self-auto">
+        <Button
+          onClick={() => (blockedByLimit() ? undefined : setDialog({ type: 'create' }))}
+          className="shrink-0 gap-2 self-start sm:self-auto"
+        >
           <Plus size={17} weight="bold" aria-hidden="true" />
           Viết thư mới
         </Button>
@@ -133,14 +135,14 @@ export function LetterDashboard() {
           <div className="rounded-sheet border border-rule bg-paper p-3.5 sm:p-4">
             <p className="text-xs font-semibold text-ink-3">Tổng số thư</p>
             <p className="mt-1 text-2xl font-extrabold tabular-nums text-ink">
-              <NumberTicker value={letters.length} />
+              <span className="tabular-nums">{letters.length}</span>
             </p>
             <p className="mt-0.5 text-xs text-ink-3">{BRAND.enforceFreeLimits ? 'Gói Free tối đa 1 thư' : 'Lưu cục bộ + Cloud'}</p>
           </div>
           <div className="rounded-sheet border border-rule bg-paper p-3.5 sm:p-4">
             <p className="text-xs font-semibold text-ink-3">Đã gắn công ty nhận</p>
             <p className="mt-1 text-2xl font-extrabold tabular-nums text-pen">
-              <NumberTicker value={withCompanyCount} />
+              <span className="tabular-nums">{withCompanyCount}</span>
             </p>
             <p className="mt-0.5 text-xs text-ink-3">Sẵn sàng xuất PDF &amp; Word</p>
           </div>
@@ -188,11 +190,7 @@ export function LetterDashboard() {
                 Chọn 1 trong 6 bố cục bên cạnh để bắt đầu ngay. Thông tin liên hệ, cỡ giấy và màu nhấn sẽ tự động lấy từ CV bạn chọn.
               </p>
               {cvs.length > 0 && (
-                <SelectField
-                  label="Lấy thông tin người gửi từ CV"
-                  value={sourceCvId}
-                  onChange={(e) => setSourceCvId(e.target.value)}
-                >
+                <SelectField label="Lấy thông tin người gửi từ CV" value={sourceCvId} onChange={(e) => setSourceCvId(e.target.value)}>
                   <option value="">Không dùng CV nào</option>
                   {cvs.map((c) => (
                     <option key={c.id} value={c.id}>

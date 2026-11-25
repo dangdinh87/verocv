@@ -24,7 +24,6 @@ export default function HomePage() {
   return (
     <>
       <div className="relative overflow-hidden">
-        <div className="hero-grid-bg pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
         <section className="wrap grid items-start gap-10 pb-14 pt-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.04fr)] lg:gap-12 lg:pb-20 lg:pt-11">
           <div className="min-w-0 lg:pt-1.5">
             <span className="inline-flex items-center gap-2 rounded-full border border-rule bg-paper px-3.5 py-1 text-xs font-semibold text-pen">
@@ -36,8 +35,8 @@ export default function HomePage() {
               <span className="block text-pen">tối ưu theo từng JD</span>
             </h1>
             <p className="mt-4 max-w-[48ch] text-[1.05rem] leading-relaxed text-ink-2">
-              Soạn CV song ngữ Việt – Anh với AI Review từng dòng, xuất PDF &amp; Word (.docx), chia sẻ Link trực tuyến kèm thống kê lượt nhà
-              tuyển dụng mở xem. Bắt đầu ngay không cần đăng ký.
+              Soạn CV song ngữ Việt – Anh với AI Review từng dòng, xuất PDF &amp; Word (.docx), chia sẻ Link trực tuyến kèm thống kê lượt
+              nhà tuyển dụng mở xem. Bắt đầu ngay không cần đăng ký.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Button href="/cv" size="lg">
@@ -52,16 +51,12 @@ export default function HomePage() {
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <div className="flex -space-x-2.5">
                 {HERO_AVATARS.map((av) => (
-                  <img
-                    key={av.src}
-                    src={av.src}
-                    alt={av.alt}
-                    className="size-9 rounded-full border-2 border-paper object-cover"
-                  />
+                  <img key={av.src} src={av.src} alt={av.alt} className="size-9 rounded-full border-2 border-paper object-cover" />
                 ))}
               </div>
               <p className="text-xs font-medium text-ink-2">
-                Được tin dùng bởi ứng viên <strong className="font-semibold text-ink">IT, Kinh doanh, Marketing &amp; Tài chính</strong> Việt Nam
+                Được tin dùng bởi ứng viên <strong className="font-semibold text-ink">IT, Kinh doanh, Marketing &amp; Tài chính</strong>{' '}
+                Việt Nam
               </p>
             </div>
 

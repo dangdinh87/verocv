@@ -1,6 +1,6 @@
 import { CheckCircle, FilePdf, Sparkle } from '@phosphor-icons/react/dist/ssr'
 import { ResumePaper } from '@/components/resume/resume-paper'
-import { SpotlightCard } from '@/components/ui/spotlight-card'
+import { Card } from '@/components/ui/card'
 import { CV_TEMPLATES } from '@/data/cv-templates'
 
 function PickVisual() {
@@ -87,7 +87,7 @@ export function StepsSection() {
 
         <ol className="mt-10 grid gap-5 p-0 lg:grid-cols-3">
           {STEPS.map((s) => (
-            <SpotlightCard key={s.num} as="li" className="elevated-card flex list-none flex-col justify-between p-6">
+            <Card key={s.num} as="li" className="flex list-none flex-col justify-between p-6">
               <div>
                 <span className="inline-flex h-7 items-center rounded-full bg-pen-wash px-2.5 text-xs font-extrabold tabular-nums text-pen">
                   Bước {s.num}
@@ -96,7 +96,7 @@ export function StepsSection() {
                 <p className="mt-2 text-sm leading-relaxed text-ink-2">{s.body}</p>
               </div>
               <div className="mt-5 rounded-control border border-rule bg-desk p-3">{s.visual}</div>
-            </SpotlightCard>
+            </Card>
           ))}
         </ol>
       </div>

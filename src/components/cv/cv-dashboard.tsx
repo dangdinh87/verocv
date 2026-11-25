@@ -33,7 +33,6 @@ import { fileSafeName } from '@/lib/print-document'
 import { WorkspaceBackupControls } from '@/components/workspace-backup-controls'
 import { CareerReadinessChecklist } from '@/components/app-shell/career-readiness-checklist'
 import { OpenOnNewParam } from '@/components/app-shell/open-on-new-param'
-import { NumberTicker } from '@/components/ui/number-ticker'
 import { migrateToV2 } from '@/types/schema'
 import { CvImportDialog } from './cv-import-dialog'
 
@@ -220,21 +219,21 @@ export function CvDashboard() {
             <div className="rounded-sheet border border-rule bg-paper p-3.5 sm:p-4">
               <p className="text-xs font-semibold text-ink-3">Tổng số CV</p>
               <p className="mt-1 text-2xl font-extrabold tabular-nums text-ink">
-                <NumberTicker value={cvs.length} />
+                <span className="tabular-nums">{cvs.length}</span>
               </p>
               <p className="mt-0.5 text-xs text-ink-3">{BRAND.enforceFreeLimits ? 'Gói Free tối đa 1 CV' : 'Lưu cục bộ + Cloud'}</p>
             </div>
             <div className="rounded-sheet border border-rule bg-paper p-3.5 sm:p-4">
               <p className="text-xs font-semibold text-ink-3">Điểm AI trung bình</p>
               <p className="mt-1 text-2xl font-extrabold tabular-nums text-pen">
-                {avgScore !== null ? <NumberTicker value={avgScore} suffix="/100" /> : '—'}
+                {avgScore !== null ? <span className="tabular-nums">{avgScore}/100</span> : '—'}
               </p>
               <p className="mt-0.5 text-xs text-ink-3">{avgScore !== null ? 'Chấm theo chuẩn ATS' : 'Tạo CV để chấm điểm'}</p>
             </div>
             <div className="rounded-sheet border border-rule bg-paper p-3.5 sm:p-4">
               <p className="text-xs font-semibold text-ink-3">Hồ sơ Gốc (Master)</p>
               <p className="mt-1 text-2xl font-extrabold tabular-nums text-ink">
-                <NumberTicker value={masterCount} />
+                <span className="tabular-nums">{masterCount}</span>
               </p>
               <p className="mt-0.5 text-xs text-ink-3">Dùng để nhân bản theo JD</p>
             </div>
@@ -269,7 +268,11 @@ export function CvDashboard() {
       )}
 
       {cvs === null ? (
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3" role="status" aria-label="Đang tải danh sách CV">
+        <div
+          className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3"
+          role="status"
+          aria-label="Đang tải danh sách CV"
+        >
           <div className="h-72 animate-pulse rounded-sheet border border-rule bg-paper" />
         </div>
       ) : cvs.length === 0 ? (
@@ -282,7 +285,8 @@ export function CvDashboard() {
               </span>
               <h2 className="mt-3 text-2xl font-bold text-ink">Bạn chưa có CV nào</h2>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-2 sm:text-base">
-                Chọn từ 12 mẫu CV chuẩn ATS, bấm dùng ngay bộ mẫu viết sẵn theo từng ngành nghề, hoặc nhập CV cũ (.pdf / .docx) để AI bóc tách tự động.
+                Chọn từ 12 mẫu CV chuẩn ATS, bấm dùng ngay bộ mẫu viết sẵn theo từng ngành nghề, hoặc nhập CV cũ (.pdf / .docx) để AI bóc
+                tách tự động.
               </p>
               <div className="mt-5 flex flex-wrap gap-2.5">
                 <Button onClick={() => openCreateModal('templates')}>12 Mẫu CV chuẩn ATS</Button>
@@ -344,7 +348,9 @@ export function CvDashboard() {
                     <Sparkle size={11} weight="fill" aria-hidden="true" />
                     {score}/100
                   </span>
-                  <span className={`mx-auto block max-w-[16rem] overflow-hidden rounded-[4px] border border-rule bg-white ${isBlank ? 'opacity-45' : ''}`}>
+                  <span
+                    className={`mx-auto block max-w-[16rem] overflow-hidden rounded-[4px] border border-rule bg-white ${isBlank ? 'opacity-45' : ''}`}
+                  >
                     <ResumePaper layout={cv.layout} data={cv.data} settings={cv.settings} label={`Xem trước ${cv.title}`} />
                   </span>
                   {isBlank && (
@@ -484,7 +490,8 @@ export function CvDashboard() {
           ) : (
             <div className="space-y-4">
               <p className="text-xs text-ink-3">
-                Mỗi bộ Role Kit đã điền sẵn bố cục, màu nhấn và các gạch đầu dòng thành tích chuẩn ATS — bạn chỉ cần sửa lại theo kinh nghiệm thật của mình.
+                Mỗi bộ Role Kit đã điền sẵn bố cục, màu nhấn và các gạch đầu dòng thành tích chuẩn ATS — bạn chỉ cần sửa lại theo kinh
+                nghiệm thật của mình.
               </p>
               <ul className="grid grid-cols-1 gap-3 p-0 sm:grid-cols-2 sm:gap-4">
                 {ROLE_STARTER_KITS.map((kit) => {

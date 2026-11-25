@@ -4,8 +4,7 @@ import { Check, CheckCircle, QrCode, ShieldCheck, Sparkle } from '@phosphor-icon
 import { useState } from 'react'
 import { useAuth } from '@/components/auth/auth-provider'
 import { VietQrCheckoutModal, type PaidPlanId } from '@/components/billing/vietqr-checkout-modal'
-import { BorderBeam } from '@/components/ui/border-beam'
-import { SpotlightCard } from '@/components/ui/spotlight-card'
+import { Card } from '@/components/ui/card'
 import { PRICES, formatVnd, proYearlyPerMonth, proYearlySavingPercent } from '@/config/brand'
 import { CV_TEMPLATES } from '@/data/cv-templates'
 import { Button } from './ui/button'
@@ -37,7 +36,11 @@ const PRO = [
 const TRUST_PILLARS = [
   { Icon: QrCode, title: 'Napas 24/7 VietQR tự động', desc: 'Kích hoạt gói tức thì sau khi chuyển khoản ngân hàng hoặc MoMo.' },
   { Icon: CheckCircle, title: 'Không tự động gia hạn gói 14 ngày', desc: 'Mua một lần duy nhất cho đợt tìm việc, không phát sinh phí ẩn.' },
-  { Icon: ShieldCheck, title: 'Hoàn tiền 7 ngày nếu nâng cấp nhầm', desc: 'Gửi mã đơn hàng qua email để được hỗ trợ kiểm tra và hoàn tiền.' },
+  {
+    Icon: ShieldCheck,
+    title: 'Hoàn tiền 7 ngày nếu nâng cấp nhầm',
+    desc: 'Gửi mã đơn hàng qua email để được hỗ trợ kiểm tra và hoàn tiền.',
+  },
   { Icon: Sparkle, title: 'Xuất PDF & Word không watermark', desc: 'Mọi gói đều giữ trọn bản quyền hồ sơ, không gắn logo quảng cáo.' },
 ] as const
 
@@ -67,7 +70,7 @@ export function PricingPlans() {
     <>
       <div className="grid items-stretch gap-5 lg:grid-cols-3">
         {/* Free Tier */}
-        <SpotlightCard as="section" aria-labelledby="goi-mien-phi" className="elevated-card flex flex-col p-7 sm:p-8">
+        <Card as="section" aria-labelledby="goi-mien-phi" className="flex flex-col p-7 sm:p-8">
           <h2 id="goi-mien-phi" className="text-[1.65rem] font-bold">
             Miễn phí
           </h2>
@@ -85,10 +88,10 @@ export function PricingPlans() {
               <Feature key={f.join('')} parts={f} />
             ))}
           </ul>
-        </SpotlightCard>
+        </Card>
 
         {/* 14-Day Job Hunt Pass */}
-        <SpotlightCard as="section" aria-labelledby="goi-pass-14d" className="elevated-card flex flex-col p-7 sm:p-8">
+        <Card as="section" aria-labelledby="goi-pass-14d" className="flex flex-col p-7 sm:p-8">
           <div className="flex items-center justify-between gap-2">
             <h2 id="goi-pass-14d" className="text-[1.65rem] font-bold">
               Pass Săn Việc
@@ -109,14 +112,10 @@ export function PricingPlans() {
               <Feature key={f.join('')} parts={f} />
             ))}
           </ul>
-        </SpotlightCard>
+        </Card>
 
-        {/* Pro Tier with BorderBeam */}
-        <BorderBeam className="elevated-card flex flex-col bg-paper" durationSec={8}>
-          <section
-            aria-labelledby="goi-pro"
-            className="flex h-full flex-col rounded-sheet border border-pen/30 bg-paper p-7 sm:p-8"
-          >
+        <div className="flex flex-col">
+          <section aria-labelledby="goi-pro" className="flex h-full flex-col rounded-sheet border-2 border-pen bg-paper p-7 sm:p-8">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
                 <h2 id="goi-pro" className="inline-flex items-center gap-1.5 text-[1.65rem] font-bold">
@@ -174,13 +173,13 @@ export function PricingPlans() {
               ))}
             </ul>
           </section>
-        </BorderBeam>
+        </div>
       </div>
 
       {/* 4-Pillar VietQR Trust & Guarantee Strip */}
       <div className="mt-6 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
         {TRUST_PILLARS.map(({ Icon, title, desc }) => (
-          <SpotlightCard key={title} className="p-4">
+          <Card key={title} className="p-4">
             <div className="flex items-start gap-3">
               <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-control bg-pen-wash text-pen">
                 <Icon size={17} weight="bold" aria-hidden="true" />
@@ -190,7 +189,7 @@ export function PricingPlans() {
                 <p className="mt-1 text-xs leading-relaxed text-ink-3">{desc}</p>
               </div>
             </div>
-          </SpotlightCard>
+          </Card>
         ))}
       </div>
 

@@ -10,7 +10,7 @@ export default function ErrorPage({ error, retry, reset }: { error: Error & { di
 
   return (
     <section className="wrap py-20 lg:py-28">
-      <div className="elevated-card mx-auto max-w-[40rem] rounded-sheet border border-rule bg-paper p-8 sm:p-10">
+      <div className="mx-auto max-w-[40rem] rounded-sheet border border-rule bg-paper p-8 sm:p-10">
         <span className="inline-flex items-center rounded-full bg-seal/10 px-3 py-1 text-xs font-bold text-seal">Sự cố tạm thời</span>
         <h1 className="display mt-4 text-[clamp(2rem,4.5vw,3.1rem)] text-ink">Đã có lỗi xảy ra</h1>
         <p className="mt-4 max-w-[48ch] text-[1.05rem] leading-relaxed text-ink-2">

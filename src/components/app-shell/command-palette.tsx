@@ -109,11 +109,46 @@ function CommandPaletteDialog({ onClose }: { onClose: () => void }) {
     }
 
     const quickActions: CommandItem[] = [
-      { id: 'act-new-cv', group: 'Thao tác nhanh', label: 'Tạo CV mới', subtitle: 'Chọn từ 12 mẫu ATS hoặc Role Kits', icon: 'plus', run: go('/cv?new=1') },
-      { id: 'act-new-letter', group: 'Thao tác nhanh', label: 'Viết Thư xin việc mới', subtitle: 'Đồng bộ từ CV có sẵn', icon: 'plus', run: go('/thu-xin-viec?new=1') },
-      { id: 'act-kanban', group: 'Thao tác nhanh', label: 'Mở Bảng ứng tuyển Kanban', subtitle: 'Theo dõi phỏng vấn & Job Clipper', icon: 'kanban', run: go('/theo-doi-ung-tuyen') },
-      { id: 'act-interview', group: 'Thao tác nhanh', label: 'Vào phòng Phỏng vấn AI', subtitle: 'Luyện trả lời theo mô hình STAR', icon: 'interview', run: go('/luyen-phong-van') },
-      { id: 'act-templates', group: 'Thao tác nhanh', label: 'Xem 12 mẫu CV', subtitle: 'Thử màu nhấn & ảnh chân dung trực tiếp', icon: 'templates', run: go('/mau-cv') },
+      {
+        id: 'act-new-cv',
+        group: 'Thao tác nhanh',
+        label: 'Tạo CV mới',
+        subtitle: 'Chọn từ 12 mẫu ATS hoặc Role Kits',
+        icon: 'plus',
+        run: go('/cv?new=1'),
+      },
+      {
+        id: 'act-new-letter',
+        group: 'Thao tác nhanh',
+        label: 'Viết Thư xin việc mới',
+        subtitle: 'Đồng bộ từ CV có sẵn',
+        icon: 'plus',
+        run: go('/thu-xin-viec?new=1'),
+      },
+      {
+        id: 'act-kanban',
+        group: 'Thao tác nhanh',
+        label: 'Mở Bảng ứng tuyển Kanban',
+        subtitle: 'Theo dõi phỏng vấn & Job Clipper',
+        icon: 'kanban',
+        run: go('/theo-doi-ung-tuyen'),
+      },
+      {
+        id: 'act-interview',
+        group: 'Thao tác nhanh',
+        label: 'Vào phòng Phỏng vấn AI',
+        subtitle: 'Luyện trả lời theo mô hình STAR',
+        icon: 'interview',
+        run: go('/luyen-phong-van'),
+      },
+      {
+        id: 'act-templates',
+        group: 'Thao tác nhanh',
+        label: 'Xem 12 mẫu CV',
+        subtitle: 'Thử màu nhấn & ảnh chân dung trực tiếp',
+        icon: 'templates',
+        run: go('/mau-cv'),
+      },
       {
         id: 'act-theme',
         group: 'Thao tác nhanh',
@@ -243,7 +278,7 @@ function CommandPaletteDialog({ onClose }: { onClose: () => void }) {
       onClick={(e) => {
         if (e.target === dialogRef.current) onClose()
       }}
-      className="elevated-card m-auto mt-14 max-h-[78dvh] w-[calc(100%-2rem)] max-w-xl overflow-hidden rounded-sheet border border-rule bg-paper p-0 text-ink backdrop:bg-ink/45 sm:mt-20"
+      className="m-auto mt-14 max-h-[78dvh] w-[calc(100%-2rem)] max-w-xl overflow-hidden rounded-sheet border border-rule bg-paper p-0 text-ink backdrop:bg-ink/45 sm:mt-20"
     >
       <div className="flex items-center gap-2.5 border-b border-rule px-4 py-3">
         <MagnifyingGlass size={18} className="shrink-0 text-ink-3" aria-hidden="true" />
@@ -278,9 +313,7 @@ function CommandPaletteDialog({ onClose }: { onClose: () => void }) {
             const isSelected = idx === clampedActive
             return (
               <li key={item.id} className="list-none">
-                {showGroup && (
-                  <p className="px-3 pb-1 pt-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-3">{item.group}</p>
-                )}
+                {showGroup && <p className="px-3 pb-1 pt-2.5 text-[11px] font-bold uppercase tracking-wider text-ink-3">{item.group}</p>}
                 <button
                   type="button"
                   id={`${listId}-${item.id}`}

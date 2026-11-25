@@ -24,8 +24,7 @@ const DEFAULT_SAMPLES: BeforeAfterSample[] = [
     beforeScore: 58,
     afterScore: 94,
     beforeText: 'Chạy quảng cáo chuyển đổi cho sản phẩm mới và tối ưu chi phí hằng tháng.',
-    afterText:
-      'Lập kế hoạch và tối ưu phễu Paid Acquisition đa kênh, tăng 38% đơn hàng hợp lệ và giảm 24% CPA trong 4 tháng.',
+    afterText: 'Lập kế hoạch và tối ưu phễu Paid Acquisition đa kênh, tăng 38% đơn hàng hợp lệ và giảm 24% CPA trong 4 tháng.',
     keywords: ['Paid Acquisition', 'CPA -24%', 'Conversion +38%'],
     explanation: 'Thay động từ chung chung bằng cấu trúc Tác động + Con số đo lường chuẩn ATS.',
   },
@@ -70,7 +69,7 @@ export function BeforeAfterCard({ samples = DEFAULT_SAMPLES }: { samples?: Befor
   }
 
   return (
-    <div className="elevated-card overflow-hidden rounded-sheet border border-rule bg-paper">
+    <div className="overflow-hidden rounded-sheet border border-rule bg-paper">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-rule bg-desk px-4 py-3">
         <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="Chọn ngành nghề mẫu">
           {samples.map((s, idx) => {
@@ -136,7 +135,9 @@ export function BeforeAfterCard({ samples = DEFAULT_SAMPLES }: { samples?: Befor
             }`}
           >
             <div className="flex items-center justify-between gap-2">
-              <span className={`inline-flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-wider ${isApplied ? 'text-mint' : 'text-pen'}`}>
+              <span
+                className={`inline-flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-wider ${isApplied ? 'text-mint' : 'text-pen'}`}
+              >
                 <Sparkle size={12} weight="fill" aria-hidden="true" />
                 {isApplied ? 'Đã áp dụng vào CV' : 'Đề xuất chuẩn ATS'}
               </span>
@@ -152,9 +153,7 @@ export function BeforeAfterCard({ samples = DEFAULT_SAMPLES }: { samples?: Befor
             type="button"
             onClick={toggleApply}
             className={`inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-control px-3.5 text-xs font-semibold transition-colors ${
-              isApplied
-                ? 'border border-rule bg-desk text-ink hover:border-pen/40'
-                : 'bg-pen text-white hover:bg-pen-dark'
+              isApplied ? 'border border-rule bg-desk text-ink hover:border-pen/40' : 'bg-pen text-white hover:bg-pen-dark'
             }`}
           >
             <CheckCircle size={15} weight="fill" aria-hidden="true" />

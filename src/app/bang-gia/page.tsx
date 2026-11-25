@@ -38,7 +38,6 @@ export default function PricingPage() {
   return (
     <>
       <div className="relative overflow-hidden">
-        <div className="hero-grid-bg pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
         <header className="wrap pb-10 pt-10 lg:pb-12 lg:pt-14">
           <span className="inline-flex items-center rounded-full border border-rule bg-paper px-3.5 py-1 text-xs font-bold text-pen">
             Minh bạch · Thanh toán VietQR tự động
@@ -48,8 +47,8 @@ export default function PricingPage() {
             <span className="block text-ink-2">Nâng cấp đúng đợt săn việc.</span>
           </h1>
           <p className="mt-3 max-w-[54ch] text-base text-ink-2">
-            Gói Miễn phí đã có sẵn PDF, Word (.docx), Kanban và 8 lượt AI/ngày. Chỉ chọn Pass 14 ngày hoặc Pro khi bạn cần gửi hàng loạt
-            CV tối ưu theo từng JD.
+            Gói Miễn phí đã có sẵn PDF, Word (.docx), Kanban và 8 lượt AI/ngày. Chỉ chọn Pass 14 ngày hoặc Pro khi bạn cần gửi hàng loạt CV
+            tối ưu theo từng JD.
           </p>
         </header>
       </div>
@@ -65,7 +64,7 @@ export default function PricingPage() {
           </h2>
           <p className="mt-2 text-sm text-ink-2">Mọi gói đều không gắn logo VeroCV lên CV của bạn khi xuất PDF hoặc Word (.docx).</p>
 
-          <div className="elevated-card mt-8 overflow-x-auto rounded-sheet border border-rule bg-paper">
+          <div className="mt-8 overflow-x-auto rounded-sheet border border-rule bg-paper">
             <table className="w-full min-w-[46rem] text-left text-sm">
               <caption className="sr-only">So sánh gói Miễn phí, Pass Săn Việc 14 ngày và Pro</caption>
               <thead>
@@ -77,8 +76,7 @@ export default function PricingPage() {
                     Miễn phí <span className="block text-xs font-medium text-ink-3">0đ mãi mãi</span>
                   </th>
                   <th scope="col" className="w-48 px-4 py-4 font-bold">
-                    Pass 14 ngày{' '}
-                    <span className="block text-xs font-medium text-mint">{formatVnd(PRICES.pass14d)} · 1 lần</span>
+                    Pass 14 ngày <span className="block text-xs font-medium text-mint">{formatVnd(PRICES.pass14d)} · 1 lần</span>
                   </th>
                   <th scope="col" className="w-52 bg-pen-wash/50 px-5 py-4 font-bold text-pen">
                     Pro <span className="block text-xs font-medium text-ink-2">Từ {formatVnd(proYearlyPerMonth)}/tháng</span>

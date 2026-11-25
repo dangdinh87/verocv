@@ -43,7 +43,6 @@ import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { AnimatedTabs } from '@/components/ui/animated-tabs'
 import { Button } from '@/components/ui/button'
-import { NumberTicker } from '@/components/ui/number-ticker'
 import { WorkspaceBackupControls } from '@/components/workspace-backup-controls'
 import { listCvs, subscribeToCvChanges, type CvRecord } from '@/lib/cv-repository'
 import { applicationsIn, columnName, formatDateValue, KANBAN_COLUMNS, moveApplication, todoProgress } from '@/lib/kanban'
@@ -297,9 +296,7 @@ function KanbanColumn({
               Chưa có vị trí nào
             </li>
           ) : (
-            cards.map((card) => (
-              <KanbanCard key={card.id} card={card} cvs={cvs} letters={letters} onEdit={onEdit} onMove={onMove} />
-            ))
+            cards.map((card) => <KanbanCard key={card.id} card={card} cvs={cvs} letters={letters} onEdit={onEdit} onMove={onMove} />)
           )}
         </ul>
       </SortableContext>
@@ -454,7 +451,11 @@ export function KanbanTracker() {
 
   if (apps === null) {
     return (
-      <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5" role="status" aria-label="Đang tải bảng theo dõi">
+      <div
+        className="grid grid-cols-1 gap-2.5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+        role="status"
+        aria-label="Đang tải bảng theo dõi"
+      >
         {KANBAN_COLUMNS.map((c) => (
           <div key={c.id} className="min-h-[17rem] animate-pulse rounded-sheet border border-rule bg-ink/[0.035]" />
         ))}
@@ -532,11 +533,7 @@ export function KanbanTracker() {
       <section aria-label="Hút thông tin tin tuyển dụng từ đường dẫn" className="rounded-sheet border border-rule bg-paper p-4">
         <div className="flex flex-col gap-3 md:flex-row md:items-center">
           <div className="relative flex-1">
-            <LinkSimple
-              size={17}
-              className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-3"
-              aria-hidden="true"
-            />
+            <LinkSimple size={17} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-3" aria-hidden="true" />
             <input
               type="url"
               inputMode="url"
@@ -556,12 +553,7 @@ export function KanbanTracker() {
               className="h-11 w-full rounded-control border border-rule bg-desk pl-9 pr-3 text-sm text-ink placeholder:text-ink-3/80 focus-visible:border-pen focus-visible:outline-none"
             />
           </div>
-          <Button
-            variant="secondary"
-            disabled={clipBusy}
-            onClick={() => void handleInlineClip()}
-            className="h-11 shrink-0 gap-1.5"
-          >
+          <Button variant="secondary" disabled={clipBusy} onClick={() => void handleInlineClip()} className="h-11 shrink-0 gap-1.5">
             <DownloadSimple size={16} weight="bold" aria-hidden="true" />
             {clipBusy ? 'Đang hút JD…' : 'Hút JD & Tạo thẻ'}
           </Button>
@@ -591,7 +583,7 @@ export function KanbanTracker() {
             <Briefcase size={16} className="text-pen" aria-hidden="true" />
           </div>
           <p className="mt-1 font-display text-2xl font-extrabold text-ink">
-            <NumberTicker value={totalApps} />
+            <span className="tabular-nums">{totalApps}</span>
           </p>
         </div>
         <div className="rounded-sheet border border-rule bg-paper p-3.5">
@@ -600,7 +592,7 @@ export function KanbanTracker() {
             <ChatsCircle size={16} className="text-pen" aria-hidden="true" />
           </div>
           <p className="mt-1 font-display text-2xl font-extrabold text-pen">
-            <NumberTicker value={interviewingCount} />
+            <span className="tabular-nums">{interviewingCount}</span>
           </p>
         </div>
         <div className="rounded-sheet border border-rule bg-paper p-3.5">
@@ -609,7 +601,7 @@ export function KanbanTracker() {
             <TrendUp size={16} className="text-ink-2" aria-hidden="true" />
           </div>
           <p className="mt-1 font-display text-2xl font-extrabold text-ink">
-            <NumberTicker value={interviewRate} suffix="%" />
+            <span className="tabular-nums">{interviewRate}%</span>
           </p>
         </div>
         <div className="rounded-sheet border border-rule bg-paper p-3.5">
@@ -618,7 +610,7 @@ export function KanbanTracker() {
             <Trophy size={16} className="text-mint" aria-hidden="true" />
           </div>
           <p className="mt-1 font-display text-2xl font-extrabold text-mint">
-            <NumberTicker value={offerCount} />
+            <span className="tabular-nums">{offerCount}</span>
           </p>
         </div>
       </div>

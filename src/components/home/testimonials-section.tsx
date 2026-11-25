@@ -1,5 +1,5 @@
 import { Quotes } from '@phosphor-icons/react/dist/ssr'
-import { SpotlightCard } from '@/components/ui/spotlight-card'
+import { Card } from '@/components/ui/card'
 
 const STORIES = [
   {
@@ -54,7 +54,7 @@ export function TestimonialsSection() {
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {STORIES.map((story) => (
-            <SpotlightCard key={story.name} as="article" className="elevated-card flex flex-col justify-between p-6">
+            <Card key={story.name} as="article" className="flex flex-col justify-between p-6">
               <div>
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-3.5">
@@ -77,7 +77,7 @@ export function TestimonialsSection() {
                 <span className="rounded-full bg-pen-wash px-2.5 py-0.5 font-semibold text-pen">{story.template}</span>
                 <span className="font-semibold text-mint">Đã kiểm chứng ATS</span>
               </div>
-            </SpotlightCard>
+            </Card>
           ))}
         </div>
       </div>

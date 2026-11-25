@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { DUC_ANH, HOANG_NAM, KHANH_LINH, MINH_ANH, QUOC_HUY, THAO_VY, type ResumeData } from '@/components/resume/resume-data'
 import { ResumePaper } from '@/components/resume/resume-paper'
 import { Button } from '@/components/ui/button'
-import { SpotlightCard } from '@/components/ui/spotlight-card'
+import { Card } from '@/components/ui/card'
 import type { CvLayout } from '@/types/schema'
 
 type CustomizerLayoutOption = {
@@ -107,7 +107,7 @@ export function LiveCustomizerSection() {
 
         <div className="mt-10 grid items-start gap-6 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-8">
           {/* Left Interactive Controls */}
-          <SpotlightCard className="elevated-card space-y-6 bg-desk/55 p-5 sm:p-6 lg:sticky lg:top-24">
+          <Card className="space-y-6 bg-desk/55 p-5 sm:p-6 lg:sticky lg:top-24">
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-ink-3">1. Chọn bố cục mẫu</p>
               <div className="mt-2.5 grid grid-cols-2 gap-2" role="group" aria-label="Chọn mẫu CV">
@@ -120,9 +120,7 @@ export function LiveCustomizerSection() {
                       aria-pressed={active}
                       onClick={() => setLayout(opt.id)}
                       className={`cursor-pointer rounded-control border px-3 py-2.5 text-left transition-colors ${
-                        active
-                          ? 'border-pen bg-pen-wash text-ink'
-                          : 'border-rule bg-paper text-ink-2 hover:border-pen/40 hover:text-ink'
+                        active ? 'border-pen bg-pen-wash text-ink' : 'border-rule bg-paper text-ink-2 hover:border-pen/40 hover:text-ink'
                       }`}
                     >
                       <span className={`block text-xs font-bold ${active ? 'text-pen' : 'text-ink'}`}>{opt.label}</span>
@@ -176,9 +174,7 @@ export function LiveCustomizerSection() {
                       aria-pressed={active}
                       onClick={() => setFontFamily(f.id)}
                       className={`h-9 cursor-pointer rounded-control border px-3 text-xs font-semibold transition-colors ${
-                        active
-                          ? 'border-pen bg-pen text-white'
-                          : 'border-rule bg-paper text-ink-2 hover:border-pen/40 hover:text-ink'
+                        active ? 'border-pen bg-pen text-white' : 'border-rule bg-paper text-ink-2 hover:border-pen/40 hover:text-ink'
                       }`}
                     >
                       {f.label}
@@ -222,10 +218,10 @@ export function LiveCustomizerSection() {
                 <ArrowRight size={17} weight="bold" aria-hidden="true" />
               </Button>
             </div>
-          </SpotlightCard>
+          </Card>
 
           {/* Right Live A4 Preview */}
-          <div className="elevated-card overflow-hidden rounded-sheet border border-rule bg-desk p-3 sm:p-5">
+          <div className="overflow-hidden rounded-sheet border border-rule bg-desk p-3 sm:p-5">
             <div className="mb-3 flex flex-wrap items-center justify-between gap-2 px-1 text-xs">
               <span className="font-bold text-ink">
                 Mẫu: {currentOption.label} · {currentOption.persona.name}
