@@ -1,24 +1,14 @@
-import { Sparkle } from '@phosphor-icons/react/dist/ssr'
-import { FlowCvCompareSection } from '@/components/home/flowcv-compare-section'
 import { FreePlanSection } from '@/components/home/free-plan-section'
 import { HeroShowcase } from '@/components/home/hero-showcase'
 import { LiveCustomizerSection } from '@/components/home/live-customizer-section'
 import { SaasBentoSection } from '@/components/home/saas-bento-section'
 import { StepsSection } from '@/components/home/steps-section'
 import { TemplatesStripSection } from '@/components/home/templates-strip-section'
-import { TestimonialsSection } from '@/components/home/testimonials-section'
 import { Button } from '@/components/ui/button'
 import { FaqList } from '@/components/ui/faq-list'
 import { FormSection } from '@/components/ui/form-section'
 import { CV_TEMPLATES } from '@/data/cv-templates'
 import { HOME_FAQS } from '@/data/faqs'
-
-const HERO_AVATARS = [
-  { src: '/images/avatars/quoc-huy.jpg', alt: 'Trần Quốc Huy' },
-  { src: '/images/avatars/minh-anh.jpg', alt: 'Lê Thị Trúc Ly' },
-  { src: '/images/avatars/hoang-nam.jpg', alt: 'Phạm Hoàng Nam' },
-  { src: '/images/avatars/khanh-linh.jpg', alt: 'Vũ Khánh Linh' },
-] as const
 
 export default function HomePage() {
   return (
@@ -26,11 +16,7 @@ export default function HomePage() {
       <div className="relative overflow-hidden">
         <section className="wrap grid items-start gap-10 pb-14 pt-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.04fr)] lg:gap-12 lg:pb-20 lg:pt-11">
           <div className="min-w-0 lg:pt-1.5">
-            <span className="inline-flex items-center gap-2 rounded-full border border-rule bg-paper px-3.5 py-1 text-xs font-semibold text-pen">
-              <Sparkle size={14} weight="fill" aria-hidden="true" />
-              VeroCV AI Studio · Đồng bộ Cloud &amp; Recruiter Analytics
-            </span>
-            <h1 className="display mt-4 text-[clamp(2.15rem,4.6vw,3.55rem)] text-ink">
+            <h1 className="display text-[clamp(2.15rem,4.6vw,3.55rem)] text-ink">
               <span className="block">Tạo CV chuẩn ATS,</span>
               <span className="block text-pen">tối ưu theo từng JD</span>
             </h1>
@@ -47,31 +33,18 @@ export default function HomePage() {
               </Button>
             </div>
 
-            {/* Candidate Social Proof Stack */}
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              <div className="flex -space-x-2.5">
-                {HERO_AVATARS.map((av) => (
-                  <img key={av.src} src={av.src} alt={av.alt} className="size-9 rounded-full border-2 border-paper object-cover" />
-                ))}
-              </div>
-              <p className="text-xs font-medium text-ink-2">
-                Được tin dùng bởi ứng viên <strong className="font-semibold text-ink">IT, Kinh doanh, Marketing &amp; Tài chính</strong>{' '}
-                Việt Nam
-              </p>
-            </div>
-
             <dl className="mt-7 grid grid-cols-1 gap-4 border-t border-rule pt-6 xs:grid-cols-3">
               <div>
                 <dt className="text-xs font-bold text-ink">PDF &amp; Word .docx</dt>
-                <dd className="mt-0.5 text-xs text-ink-3">Lớp chữ ATS không dấu mờ</dd>
+                <dd className="mt-0.5 text-xs text-ink-3">Máy lọc hồ sơ đọc được, không dấu mờ</dd>
               </div>
               <div>
-                <dt className="text-xs font-bold text-ink">Workers AI Copilot</dt>
-                <dd className="mt-0.5 text-xs text-ink-3">Chấm điểm, Tailor JD &amp; Dịch VI↔EN</dd>
+                <dt className="text-xs font-bold text-ink">Gợi ý sửa bằng AI</dt>
+                <dd className="mt-0.5 text-xs text-ink-3">Chấm điểm, khớp JD, dịch Việt ↔ Anh</dd>
               </div>
               <div>
-                <dt className="text-xs font-bold text-ink">Link CV /p/slug</dt>
-                <dd className="mt-0.5 text-xs text-ink-3">Đếm lượt HR mở xem</dd>
+                <dt className="text-xs font-bold text-ink">Link CV trực tuyến</dt>
+                <dd className="mt-0.5 text-xs text-ink-3">Biết khi nhà tuyển dụng mở xem</dd>
               </div>
             </dl>
           </div>
@@ -84,10 +57,8 @@ export default function HomePage() {
 
       <SaasBentoSection />
       <LiveCustomizerSection />
-      <FlowCvCompareSection />
       <StepsSection />
       <TemplatesStripSection />
-      <TestimonialsSection />
       <FreePlanSection />
 
       <FormSection id="hoi-dap" title="Hỏi đáp thường gặp">
@@ -99,7 +70,8 @@ export default function HomePage() {
           <div>
             <h2 className="display text-[clamp(1.75rem,3.6vw,2.5rem)] text-ink">Nâng cấp bộ hồ sơ ứng tuyển ngay hôm nay</h2>
             <p className="mt-2.5 max-w-[48ch] text-ink-2">
-              Soạn và xuất bản miễn phí ngay trên trình duyệt, hoặc đăng nhập để đồng bộ Cloud D1 và theo dõi lượt nhà tuyển dụng mở xem.
+              Soạn và xuất bản miễn phí ngay trên trình duyệt, hoặc đăng nhập để đồng bộ giữa các thiết bị và theo dõi lượt nhà tuyển dụng
+              mở xem.
             </p>
           </div>
           <Button href="/cv" size="lg" className="shrink-0">

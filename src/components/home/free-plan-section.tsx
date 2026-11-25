@@ -13,7 +13,7 @@ const INCLUDED = [
     'Chấm điểm từng dòng, đối chiếu ngữ nghĩa CV với JD, viết lại thành tích và luyện câu hỏi phỏng vấn STAR.',
   ],
   [
-    '1 Link CV Online (/p/slug) kèm thống kê',
+    '1 link CV trực tuyến kèm thống kê lượt xem',
     'Xuất bản hồ sơ thành trang web cá nhân có mã QR, tuỳ chọn ẩn số điện thoại, khoá PIN và đếm lượt nhà tuyển dụng mở xem.',
   ],
   [

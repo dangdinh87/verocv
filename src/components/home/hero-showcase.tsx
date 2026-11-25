@@ -60,9 +60,7 @@ export function HeroShowcase() {
               verocv.vn/studio/quoc-huy
             </span>
           </div>
-          <span className="shrink-0 whitespace-nowrap rounded-full bg-pen-wash px-2.5 py-0.5 text-[0.7rem] font-bold text-pen">
-            Cloud D1 Sync
-          </span>
+          <span className="shrink-0 whitespace-nowrap rounded-full bg-pen-wash px-2.5 py-0.5 text-[0.7rem] font-bold text-pen">Đã lưu</span>
         </div>
 
         {/* Interactive Feature Tabs */}

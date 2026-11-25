@@ -14,20 +14,20 @@
 }
 
 @theme {
-  --color-ink: #111917;
-  --color-ink-2: #374440;
-  --color-ink-3: #64736e;
-  --color-pen: #0c6a58;
-  --color-pen-dark: #085042;
-  --color-pen-wash: #e4f3ef;
-  --color-mint: #0e8a6d;
-  --color-mint-wash: #daf5ed;
-  --color-seal: #dc2626;
-  --color-kraft: #f3ece0;
-  --color-kraft-deep: #dfd1b8;
-  --color-desk: #f6f5f0;
+  --color-ink: #1c1e22;
+  --color-ink-2: #3e424a;
+  --color-ink-3: #686c75;
+  --color-pen: #2448a8;
+  --color-pen-dark: #1b3786;
+  --color-pen-wash: #e9eefa;
+  --color-mint: #1f7a4d;
+  --color-mint-wash: #e2f2e8;
+  --color-seal: #c2362b;
+  --color-kraft: #efe4cf;
+  --color-kraft-deep: #d8c4a0;
+  --color-desk: #f7f4ee;
   --color-paper: #ffffff;
-  --color-rule: #e2e0d8;
+  --color-rule: #e3dccf;
 
   --radius-sheet: 12px;
   --radius-control: 8px;
@@ -36,20 +36,20 @@
 }
 
 [data-theme='dark'] {
-  --color-desk: #0a100f;
-  --color-paper: #121b19;
-  --color-ink: #f3f7f5;
-  --color-ink-2: #c5d1cd;
-  --color-ink-3: #899b95;
-  --color-rule: #1e2d29;
-  --color-pen: #11826c;
-  --color-pen-dark: #0d6b58;
-  --color-pen-wash: #112b26;
-  --color-mint: #34d399;
-  --color-mint-wash: #0a2922;
-  --color-seal: #fb7185;
-  --color-kraft: #1c2420;
-  --color-kraft-deep: #2b3831;
+  --color-desk: #121315;
+  --color-paper: #1a1c20;
+  --color-ink: #efebe3;
+  --color-ink-2: #c8c3b8;
+  --color-ink-3: #8e897f;
+  --color-rule: #2b2d32;
+  --color-pen: #4a6fd8;
+  --color-pen-dark: #3a5ec4;
+  --color-pen-wash: #1c2440;
+  --color-mint: #5cc796;
+  --color-mint-wash: #13281d;
+  --color-seal: #f07a6c;
+  --color-kraft: #2a251c;
+  --color-kraft-deep: #3c3428;
   color-scheme: dark;
 }
 
@@ -134,13 +134,13 @@
     padding-bottom: 0.35rem;
   }
 
-  /* Footer stays deep forest slate across both light and dark modes */
+  /* Footer giữ nền than chì ở cả hai chế độ */
   .site-footer {
-    background: #111917;
-    color: rgba(243, 247, 245, 0.82);
+    background: #1c1e22;
+    color: rgba(239, 235, 227, 0.82);
   }
   [data-theme='dark'] .site-footer {
-    background: #070d0c;
+    background: #0c0d0f;
     border-top: 1px solid var(--color-rule);
   }
 
@@ -240,15 +240,15 @@
   [data-theme='dark'] {
     --color-desk: #ffffff;
     --color-paper: #ffffff;
-    --color-ink: #111917;
-    --color-ink-2: #374440;
-    --color-ink-3: #64736e;
-    --color-rule: #e2e0d8;
+    --color-ink: #1c1e22;
+    --color-ink-2: #3e424a;
+    --color-ink-3: #686c75;
+    --color-rule: #e3dccf;
     color-scheme: light;
   }
   html {
     background: #fff !important;
-    color: #111917 !important;
+    color: #1c1e22 !important;
   }
   html,
   body {
@@ -261,7 +261,7 @@
   }
   body {
     background: transparent !important;
-    color: #111917 !important;
+    color: #1c1e22 !important;
   }
   .no-print {
     display: none !important;

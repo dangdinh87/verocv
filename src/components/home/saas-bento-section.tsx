@@ -26,7 +26,7 @@ export function SaasBentoSection() {
                   <Sparkle size={20} weight="fill" aria-hidden="true" />
                 </span>
                 <span className="whitespace-nowrap rounded-full border border-rule bg-paper px-3 py-1 text-xs font-semibold text-ink-2">
-                  Cloudflare Workers AI
+                  Gợi ý bằng AI
                 </span>
               </div>
               <h3 className="mt-5 text-[1.15rem] font-bold leading-snug text-ink">
@@ -106,7 +106,7 @@ export function SaasBentoSection() {
                   <Globe size={20} weight="fill" aria-hidden="true" />
                 </span>
                 <span className="whitespace-nowrap rounded-full border border-rule bg-paper px-3 py-1 text-xs font-semibold text-ink-2">
-                  Live Link &amp; Analytics
+                  Link CV &amp; lượt xem
                 </span>
               </div>
               <h3 className="mt-5 text-[1.15rem] font-bold leading-snug text-ink">Link CV Online riêng &amp; Biết ngay khi HR mở xem</h3>
