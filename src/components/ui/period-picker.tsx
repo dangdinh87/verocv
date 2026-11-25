@@ -128,7 +128,7 @@ export function PeriodPickerField({
           onClick={toggleOpen}
           aria-expanded={open}
           className={`inline-flex cursor-pointer items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold transition-colors ${
-            open ? 'bg-pen text-white' : 'text-pen hover:bg-pen-wash'
+            open ? 'bg-pen-fill text-white' : 'text-pen hover:bg-pen-wash'
           }`}
         >
           <CalendarBlank size={13} weight="bold" aria-hidden="true" />
@@ -248,7 +248,7 @@ export function PeriodPickerField({
                 if (formatted) onChange(formatted)
                 setOpen(false)
               }}
-              className="inline-flex h-7 cursor-pointer items-center gap-1 rounded-control bg-pen px-2.5 text-xs font-semibold text-white hover:bg-pen-dark"
+              className="inline-flex h-7 cursor-pointer items-center gap-1 rounded-control bg-pen-fill px-2.5 text-xs font-semibold text-white hover:bg-pen-fill/90"
             >
               <Check size={12} weight="bold" aria-hidden="true" />
               Xong

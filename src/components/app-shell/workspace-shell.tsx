@@ -95,7 +95,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
     <div className="flex min-h-dvh flex-col bg-desk lg:flex-row">
       <a
         href="#noi-dung-chinh"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-control focus:bg-pen focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-control focus:bg-pen-fill focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
       >
         Chuyển đến nội dung chính
       </a>
@@ -184,7 +184,7 @@ export function WorkspaceShell({ children }: { children: ReactNode }) {
                   href="/tai-khoan"
                   className="flex min-w-0 flex-1 items-center gap-2 rounded-control border border-rule bg-desk px-2.5 py-1.5 text-left hover:border-pen"
                 >
-                  <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-pen text-xs font-bold text-white">
+                  <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-pen-fill text-xs font-bold text-white">
                     {user.name.slice(0, 1).toUpperCase()}
                   </span>
                   <span className="min-w-0 flex-1">

@@ -158,9 +158,7 @@ export function AiReviewPanel({
     return evaluateCvReview(doc.data, lang, doc.settings.hiddenSections)
   }, [doc, lang])
 
-  const effectiveReport = useMemo<
-    (CvReviewReport & { jdMatchScore?: number; provider?: string }) | null
-  >(() => {
+  const effectiveReport = useMemo<(CvReviewReport & { jdMatchScore?: number; provider?: string }) | null>(() => {
     if (!baseReport || !doc) return null
     if (!aiResult) return baseReport
 
@@ -321,9 +319,7 @@ export function AiReviewPanel({
         provider: json.provider ?? 'local-engine',
         baselineSnapshot: {
           summary: doc.data.summary,
-          jobBullets: Object.fromEntries(
-            doc.data.jobs.flatMap((j, ji) => j.bullets.map((b, bi) => [`${ji}-${bi}`, b])),
-          ),
+          jobBullets: Object.fromEntries(doc.data.jobs.flatMap((j, ji) => j.bullets.map((b, bi) => [`${ji}-${bi}`, b]))),
           skillsCount: doc.data.skills.length,
         },
       })
@@ -513,9 +509,7 @@ export function AiReviewPanel({
                 aria-selected={active}
                 onClick={() => setFilter(pill.key)}
                 className={`inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${
-                  active
-                    ? 'border-pen bg-pen text-white'
-                    : 'border-rule bg-paper text-ink-2 hover:border-pen/40 hover:text-ink'
+                  active ? 'border-pen bg-pen-fill text-white' : 'border-rule bg-paper text-ink-2 hover:border-pen/40 hover:text-ink'
                 }`}
               >
                 <span>{pill.label}</span>
@@ -619,12 +613,14 @@ export function AiReviewPanel({
                               setDraftEdits((prev) => ({ ...prev, [fix.id]: next.join(', ') }))
                             }}
                             className={`inline-flex cursor-pointer items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors ${
-                              selected
-                                ? 'border-pen bg-pen text-white'
-                                : 'border-rule bg-paper text-ink-2 hover:border-pen/40'
+                              selected ? 'border-pen bg-pen-fill text-white' : 'border-rule bg-paper text-ink-2 hover:border-pen/40'
                             }`}
                           >
-                            {selected ? <Check size={11} weight="bold" aria-hidden="true" /> : <Plus size={11} weight="bold" aria-hidden="true" />}
+                            {selected ? (
+                              <Check size={11} weight="bold" aria-hidden="true" />
+                            ) : (
+                              <Plus size={11} weight="bold" aria-hidden="true" />
+                            )}
                             {skill}
                           </button>
                         )

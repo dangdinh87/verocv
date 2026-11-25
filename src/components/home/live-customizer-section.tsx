@@ -124,7 +124,7 @@ export function LiveCustomizerSection() {
                       }`}
                     >
                       <span className={`block text-xs font-bold ${active ? 'text-pen' : 'text-ink'}`}>{opt.label}</span>
-                      <span className="mt-0.5 block truncate text-[0.68rem] text-ink-3">{opt.subtitle}</span>
+                      <span className="mt-0.5 block truncate text-[0.68rem] text-ink-2">{opt.subtitle}</span>
                     </button>
                   )
                 })}
@@ -174,7 +174,7 @@ export function LiveCustomizerSection() {
                       aria-pressed={active}
                       onClick={() => setFontFamily(f.id)}
                       className={`h-9 cursor-pointer rounded-control border px-3 text-xs font-semibold transition-colors ${
-                        active ? 'border-pen bg-pen text-white' : 'border-rule bg-paper text-ink-2 hover:border-pen/40 hover:text-ink'
+                        active ? 'border-pen bg-pen-fill text-white' : 'border-rule bg-paper text-ink-2 hover:border-pen/40 hover:text-ink'
                       }`}
                     >
                       {f.label}

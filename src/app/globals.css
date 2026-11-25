@@ -20,6 +20,9 @@
   --color-pen: #2448a8;
   --color-pen-dark: #1b3786;
   --color-pen-wash: #e9eefa;
+  /* Nền đặc có chữ trắng (nút chính, chip đang chọn). Tách khỏi --color-pen vì ở dark mode màu chữ cần sáng, màu nền cần tối. */
+  --color-pen-fill: #2448a8;
+  --color-seal-fill: #c2362b;
   --color-mint: #1f7a4d;
   --color-mint-wash: #e2f2e8;
   --color-seal: #c2362b;
@@ -71,9 +74,11 @@
   --color-ink-2: #c8c3b8;
   --color-ink-3: #8e897f;
   --color-rule: #2b2d32;
-  --color-pen: #4a6fd8;
-  --color-pen-dark: #3a5ec4;
+  --color-pen: #7f9bef;
+  --color-pen-dark: #a9bdf6;
   --color-pen-wash: #1c2440;
+  --color-pen-fill: #3a5ec4;
+  --color-seal-fill: #c2362b;
   --color-mint: #5cc796;
   --color-mint-wash: #13281d;
   --color-seal: #f07a6c;

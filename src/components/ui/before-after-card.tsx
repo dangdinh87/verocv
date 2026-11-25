@@ -84,7 +84,7 @@ export function BeforeAfterCard({ samples = DEFAULT_SAMPLES }: { samples?: Befor
                 }}
                 aria-pressed={active}
                 className={`cursor-pointer rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
-                  active ? 'bg-pen text-white' : 'border border-rule bg-paper text-ink-2 hover:border-pen/40 hover:text-ink'
+                  active ? 'bg-pen-fill text-white' : 'border border-rule bg-paper text-ink-2 hover:border-pen/40 hover:text-ink'
                 }`}
               >
                 {s.role}
@@ -153,7 +153,7 @@ export function BeforeAfterCard({ samples = DEFAULT_SAMPLES }: { samples?: Befor
             type="button"
             onClick={toggleApply}
             className={`inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-control px-3.5 text-xs font-semibold transition-colors ${
-              isApplied ? 'border border-rule bg-desk text-ink hover:border-pen/40' : 'bg-pen text-white hover:bg-pen-dark'
+              isApplied ? 'border border-rule bg-desk text-ink hover:border-pen/40' : 'bg-pen-fill text-white hover:bg-pen-fill/90'
             }`}
           >
             <CheckCircle size={15} weight="fill" aria-hidden="true" />

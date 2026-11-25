@@ -164,7 +164,10 @@ export function SkillsSectionFields({ onSuggest }: { onSuggest: () => void }) {
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="text-xs text-ink-3">
-              Hiển thị: <strong className="text-ink">{groupName.trim() ? `${groupName.trim()}: ${groupItems.trim() || '…'}` : 'Tên nhóm: Kỹ năng 1, Kỹ năng 2'}</strong>
+              Hiển thị:{' '}
+              <strong className="text-ink">
+                {groupName.trim() ? `${groupName.trim()}: ${groupItems.trim() || '…'}` : 'Tên nhóm: Kỹ năng 1, Kỹ năng 2'}
+              </strong>
             </span>
             <Button
               size="sm"
@@ -260,7 +263,11 @@ export function LanguagesSectionFields() {
 
             <div className="flex flex-wrap items-center justify-between gap-2 border-t border-rule pt-2">
               <span className="text-xs font-semibold text-ink-3">Thang chấm trên CV:</span>
-              <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label={`Mức độ thành thạo ${lang.name || `ngôn ngữ ${i + 1}`}`}>
+              <div
+                className="flex flex-wrap items-center gap-1.5"
+                role="group"
+                aria-label={`Mức độ thành thạo ${lang.name || `ngôn ngữ ${i + 1}`}`}
+              >
                 <div className="inline-flex items-center gap-1 rounded-full border border-rule bg-desk px-2 py-1">
                   {[1, 2, 3, 4, 5].map((dot) => {
                     const filled = dot <= score
@@ -289,7 +296,7 @@ export function LanguagesSectionFields() {
                   onClick={() => setProficiency(lang.id, 0)}
                   aria-pressed={score === 0}
                   className={`h-7 cursor-pointer rounded-full border px-2.5 text-xs font-semibold transition-colors ${
-                    score === 0 ? 'border-ink bg-ink text-white' : 'border-rule bg-paper text-ink-3 hover:text-ink'
+                    score === 0 ? 'border-ink bg-ink text-paper' : 'border-rule bg-paper text-ink-3 hover:text-ink'
                   }`}
                 >
                   Ẩn vạch

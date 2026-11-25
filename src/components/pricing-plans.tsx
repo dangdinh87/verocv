@@ -134,7 +134,7 @@ export function PricingPlans() {
                     aria-pressed={yearly === o.value}
                     onClick={() => setYearly(o.value)}
                     className={`inline-flex h-8 cursor-pointer items-center gap-1 rounded-full px-3 text-xs font-semibold transition-colors ${
-                      yearly === o.value ? 'bg-pen text-white' : 'text-ink-2 hover:text-ink'
+                      yearly === o.value ? 'bg-pen-fill text-white' : 'text-ink-2 hover:text-ink'
                     }`}
                   >
                     <span>{o.label}</span>

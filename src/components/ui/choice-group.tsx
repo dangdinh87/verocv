@@ -28,7 +28,7 @@ export function ChoiceGroup<T extends string>({
               aria-checked={active}
               onClick={() => onChange(o.value)}
               className={`h-10 cursor-pointer rounded-full px-4 text-[0.95rem] font-semibold transition-colors ${
-                active ? 'bg-pen text-white' : 'border border-rule text-ink-2 hover:border-ink/40 hover:text-ink'
+                active ? 'bg-pen-fill text-white' : 'border border-rule text-ink-2 hover:border-ink/40 hover:text-ink'
               }`}
             >
               {o.label}

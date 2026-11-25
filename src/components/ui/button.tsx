@@ -5,11 +5,11 @@ const BASE =
   'inline-flex items-center justify-center gap-2 rounded-control font-semibold whitespace-nowrap cursor-pointer select-none transition-[background-color,border-color,color,transform] duration-[120ms] active:translate-y-px disabled:opacity-50 disabled:pointer-events-none'
 
 const VARIANTS = {
-  primary: 'bg-pen text-white hover:bg-pen-dark',
+  primary: 'bg-pen-fill text-white hover:bg-pen-fill/90',
   secondary: 'border border-rule bg-paper text-ink hover:border-ink/30 hover:bg-desk',
   ghost: 'text-ink-2 hover:bg-ink/[0.05] hover:text-ink',
   /** Hành động không hoàn tác được (xoá). */
-  danger: 'bg-seal text-white hover:bg-seal/90',
+  danger: 'bg-seal-fill text-white hover:bg-seal-fill/90',
 } as const
 
 const SIZES = {

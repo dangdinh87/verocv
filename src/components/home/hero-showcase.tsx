@@ -103,7 +103,7 @@ export function HeroShowcase() {
                     type="button"
                     onClick={() => setFixedLine((v) => !v)}
                     className={`inline-flex h-7 cursor-pointer items-center gap-1 rounded-control px-2.5 text-[0.72rem] font-semibold transition-colors ${
-                      fixedLine ? 'border border-rule bg-desk text-ink' : 'bg-pen text-white hover:bg-pen-dark'
+                      fixedLine ? 'border border-rule bg-desk text-ink' : 'bg-pen-fill text-white hover:bg-pen-fill/90'
                     }`}
                   >
                     <CheckCircle size={13} weight="fill" aria-hidden="true" />

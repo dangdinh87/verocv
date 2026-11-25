@@ -112,7 +112,7 @@ export function CvTemplateGallery() {
                   onClick={() => setPhotoFilter(pf.id)}
                   aria-pressed={active}
                   className={`h-8 rounded-full px-3.5 text-xs font-semibold transition-colors ${
-                    active ? 'bg-ink text-white' : 'text-ink-2 hover:bg-ink/[0.06]'
+                    active ? 'bg-ink text-paper' : 'text-ink-2 hover:bg-ink/[0.06]'
                   }`}
                 >
                   {pf.label}
@@ -166,7 +166,7 @@ export function CvTemplateGallery() {
             <span
               aria-hidden="true"
               className={`rounded-full px-1.5 py-0.5 text-[0.68rem] font-bold ${
-                showSamplePhoto ? 'bg-pen text-white' : 'bg-rule text-ink-2'
+                showSamplePhoto ? 'bg-pen-fill text-white' : 'bg-rule text-ink-2'
               }`}
             >
               {showSamplePhoto ? 'BẬT' : 'TẮT'}
@@ -184,7 +184,7 @@ export function CvTemplateGallery() {
                 onClick={() => setFilter(f)}
                 aria-pressed={active}
                 className={`h-9 shrink-0 rounded-full px-3.5 text-sm font-semibold transition-colors ${
-                  active ? 'bg-pen text-white' : 'border border-rule bg-paper text-ink-2 hover:border-ink/30 hover:bg-ink/[0.04]'
+                  active ? 'bg-pen-fill text-white' : 'border border-rule bg-paper text-ink-2 hover:border-ink/30 hover:bg-ink/[0.04]'
                 }`}
               >
                 {f}
@@ -282,7 +282,7 @@ export function CvTemplateGallery() {
                     type="button"
                     onClick={() => handleUseKit(kit)}
                     disabled={creatingKitId !== null}
-                    className="mt-3 inline-flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-control bg-pen px-4 text-sm font-semibold text-white transition-colors hover:bg-pen-dark disabled:cursor-not-allowed disabled:opacity-60"
+                    className="mt-3 inline-flex h-10 w-full cursor-pointer items-center justify-center gap-2 rounded-control bg-pen-fill px-4 text-sm font-semibold text-white transition-colors hover:bg-pen-fill/90 disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {isCreating ? 'Đang tạo CV...' : 'Dùng bộ mẫu ngành này'}
                     {!isCreating && <ArrowRight size={15} weight="bold" aria-hidden="true" />}

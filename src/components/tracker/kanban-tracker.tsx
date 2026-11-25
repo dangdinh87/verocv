@@ -672,7 +672,7 @@ export function KanbanTracker() {
                 aria-pressed={active}
                 onClick={() => setFilter(key)}
                 className={`h-9 cursor-pointer rounded-full px-3 text-xs font-semibold transition-colors ${
-                  active ? 'bg-pen text-white' : 'border border-rule bg-paper text-ink-2 hover:border-ink/40 hover:text-ink'
+                  active ? 'bg-pen-fill text-white' : 'border border-rule bg-paper text-ink-2 hover:border-ink/40 hover:text-ink'
                 }`}
               >
                 {label}
